@@ -4,8 +4,8 @@
     <TargetFramework>net6.0</TargetFramework>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <Nullable>enable</Nullable>
-    <AssemblyName>BasicGeometry</AssemblyName>
-    <RootNamespace>BasicGeometry</RootNamespace>
+    <AssemblyName>CoreGeometricSystem</AssemblyName>
+    <RootNamespace>CoreGeometricSystem</RootNamespace>
     <Authors>Gaal Sandor/Authors>
     <Description>Exact geometric formulas for area, circumference, and volume calculations.</Description>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
