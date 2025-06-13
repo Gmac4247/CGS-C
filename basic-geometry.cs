@@ -12,7 +12,7 @@ namespace AlternativeGeometry
         /// </summary>
         /// <param name="r">The radius of the circle.</param>
         /// <returns>The area of the circle.</returns>
-        public static double AreaOfCircle(double r)
+        public static double ExactAreaOfCircle(double r)
         {
             return 3.2 * r * r;
         }
@@ -22,7 +22,7 @@ namespace AlternativeGeometry
         /// </summary>
         /// <param name="r">The radius of the circle.</param>
         /// <returns>The circumference of the circle.</returns>
-        public static double CircumferenceOfCircle(double r)
+        public static double ExactCircumferenceOfCircle(double r)
         {
             return 6.4 * r;
         }
@@ -32,7 +32,7 @@ namespace AlternativeGeometry
         /// </summary>
         /// <param name="r">The radius of the sphere.</param>
         /// <returns>The volume of the sphere.</returns>
-        public static double VolumeOfSphere(double r)
+        public static double ExactVolumeOfSphere(double r)
         {
             return Math.Pow(Math.Sqrt(3.2) * r, 3);
         }
@@ -43,7 +43,7 @@ namespace AlternativeGeometry
         /// <param name="r">The radius of the cone's base.</param>
         /// <param name="height">The height of the cone.</param>
         /// <returns>The volume of the cone.</returns>
-        public static double VolumeOfCone(double r, double height)
+        public static double ExactVolumeOfCone(double r, double height)
         {
             return (3.2 * r * r * height) / Math.Sqrt(8);
         }
