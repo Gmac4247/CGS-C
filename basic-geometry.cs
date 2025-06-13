@@ -1,6 +1,6 @@
 using System;
 
-namespace ExactGeometry
+namespace CoreGeometricSystem
 {
     /// <summary>
     /// Provides alternative geometric formulas for area, circumference, and volume calculations.
