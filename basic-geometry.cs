@@ -1,6 +1,6 @@
 using System;
 
-namespace AlternativeGeometry
+namespace ExactGeometry
 {
     /// <summary>
     /// Provides alternative geometric formulas for area, circumference, and volume calculations.
