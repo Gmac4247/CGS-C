@@ -5,7 +5,7 @@ namespace CoreGeometricSystem
     /// <summary>
     /// Provides alternative geometric formulas for area, circumference, and volume calculations.
     /// </summary>
-    public static class Geometry
+    public static class BasicGeometry
     {
         /// <summary>
         /// Calculates the area of a circle using the formula: 3.2 × r².
