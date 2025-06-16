@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Gaal Sandor</Authors>
+    <PackageId>CoreGeometricSystem</PackageId>
+    <Version>1.0.4</Version>
+    <Description>Empirical geometry formulas with 3.2 constant</Description>
+    <PackageTags>geometry;math;circle;sphere;cone;area;volume;empirical;exact; trigonometry</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+</Project>
