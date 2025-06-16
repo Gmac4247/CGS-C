@@ -8,6 +8,8 @@ Exact formulas for calculating
 - volume of a sphere
 - volume of a cone
 
+and trigonometry 
+
 <!---
 Core Geometric System ™
 
@@ -18,4 +20,6 @@ Exact formulas for calculating
 - circumference 
 - volume of a sphere
 - volume of a cone
+
+and trigonometry 
 --->
