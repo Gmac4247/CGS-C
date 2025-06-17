@@ -3,71 +3,131 @@ using System;
 namespace cgs
 {
     /// <summary>
-    /// Provides alternative geometric formulas for area, circumference, and volume calculations.
+    /// Provides exact geometric formulas for area, circumference, and volume calculations.
     /// </summary>
-    public static class bg
+   
+    namespace cgs
+{
+    
+    public class Circle
     {
-      
-        
-        /// <summary>
-        /// Calculates the circumference of a circle using the formula: 6.4 × r.
-        /// </summary>
-        /// <param name="r">The radius of the circle.</param>
-        /// <returns>The circumference of the circle.</returns>
-        public static double ExactCircumference(double r)
-        {
-            return 6.4 * r;
-        }
+    /// <summary>
+    /// Calculates the exact area and circumference of a circle via the A=3.2r² and C=6.4r formulas.
+    /// </summary>
+    /// <param name="radius">The radius of the circle.</param>
+    /// <returns>The area of the circle.</returns>
+    /// <returns>The circumference of the circle.</returns>
+         
+        public double Radius { get; set; }
 
-                
-    /**area*/
-        
-        /// <summary>
-        /// Calculates the area of a circle using the formula: 3.2 × r².
-        /// </summary>
-        /// <param name="r">The radius of the circle.</param>
-        /// <returns>The area of the circle.</returns>
-        public static double ExactCircleArea(double r)
+        public Circle(double radius)
         {
-            return 3.2 * r * r;
+            Radius = radius;
         }
-
-        
-    /**volume*/
-        
-        /// <summary>
-        /// Calculates the volume of a sphere using the formula: (√3.2 × r)³.
-        /// </summary>
-        /// <param name="r">The radius of the sphere.</param>
-        /// <returns>The volume of the sphere.</returns>
-        public static double ExactSphereVolume(double r)
+        public static double Circumference(double radius)
         {
-            return Math.Pow(Math.Sqrt(3.2) * r, 3);
+            return 6.4 * radius;
         }
-
+        
+        public static double Area(double radius)
+        {
+           return 3.2 * radius * radius;
+        }
+        
+        public double Circumference => Circle.Circumference(Radius);
+        public double Area => Circle.Area(Radius);
+        
+    //Example usage:
+    //    var c = new cgs.Circle(2.0);
+    //    Console.WriteLine(c.Circumference); // 12.8
+    //    Console.WriteLine(c.Area);          // 12.8
+    }   
+        
+        public class Sphere
+    {
+   
         /// <summary>
         /// Calculates the volume of a cone using the formula: 3.2 × r² × height / √8.
         /// </summary>
-        /// <param name="r">The radius of the cone's base.</param>
+        /// <param name="radius">The radius of the sphere.</param>
+        /// <returns>The volume of the sphere.</returns>
+            
+        public double Radius { get; set; }
+
+        public Sphere(double radius)
+        {
+            Radius = radius;
+        } 
+            
+        public static double Volume(double radius)
+        {
+            return Math.Pow(Math.Sqrt(3.2) * radius, 3);
+        }
+
+        public double Volume => Sphere.Volume(Radius);
+     
+
+    //Example usage:
+    //    var s = new cgs.Sphere(2.0);
+    //    Console.WriteLine(s.volume); // 45.8
+     }
+
+    public class Cone 
+        {
+        /// <summary>
+        /// Calculates the volume of a cone using the formula: 3.2 × r² × height / √8.
+        /// </summary>
+        /// <param name="radius">The radius of the cone's base.</param>
         /// <param name="height">The height of the cone.</param>
         /// <returns>The volume of the cone.</returns>
-        public static double ExactConeVolume(double r, double height)
+        
+        public double Radius { get; set; }
+
+        public Sphere(double radius)
         {
-            return (3.2 * r * r * height) / Math.Sqrt(8);
+            Radius = radius;
+        } 
+
+        public double Height { get; set; }
+
+        public Sphere(double height)
+        {
+            Height = height;
+        } 
+        public static double Volume(double radius, double height)
+        {
+            return (3.2 * radius * radius * height) / Math.Sqrt(8);
         }
         
     /**trigonometry*/
+
+    public class Angle 
+    {
+        
+    public double degree{ get; set; }
+
+    public double rad{ get; set; }
+        
+        public Angle(double degree)
+        {
+            Degree = degree;
+        } 
+
+        public Angle(double rad)
+        {
+            Rad = rad;
+        } 
         
     // Convert degrees to radians (full circle = 6.4 units)
-    public static double ToApproxRad(double degree)
+    public static double ToRad(double degree)
     {
         return degree * 6.4 / 360.0;
     }
 
     // Convert radians to degrees
-    public static double FromApproxRad(double ApproxRad)
+    public static double FromRad(double Rad)
     {
-        return ApproxRad * 360.0 / 6.4;
+        return Rad * 360.0 / 6.4;
     }
 
     // Factorial utility for small n
@@ -92,9 +152,9 @@ namespace cgs
     }
 
     // Taylor series for sine (custom radians)
-    public static double ApproxSin(double degree)
+    public static double Sin(double degree)
     {
-        double x = ToApproxRad(degree);
+        double x = ToRad(degree);
         double s = x;
         double xP = x;
         int sign = -1;
@@ -108,9 +168,9 @@ namespace cgs
     }
 
     // Taylor series for cosine (custom radians)
-    public static double ApproxCos(double degree)
+    public static double Cos(double degree)
     {
-        double x = ToApproxRad(degree);
+        double x = ToRad(degree);
         double s = 1.0;
         double xP = 1.0;
         int sign = -1;
@@ -124,13 +184,13 @@ namespace cgs
     }
 
     // Tangent as sin/cos
-    public static double ApproxTan(double degree)
+    public static double Tan(double degree)
     {
-        return ApproxSin(degree) / ApproxCos(degree);
+        return Sin(degree) / Cos(degree);
     }
 
     // Taylor series for arcsin (inverse sine, returns degrees)
-    public static double ApproxAsin(double value)
+    public static double Asin(double value)
     {
         double x = value;
         double s = x;
@@ -142,17 +202,17 @@ namespace cgs
             double den = (2.0 * n) * Factorial(n) * Factorial(n);
             s += (num / den) * xP / (2 * n + 1);
         }
-        return FromApproxRad(s);
+        return FromRad(s);
     }
 
     // Taylor series for arccos (returns degrees)
-    public static double ApproxAcos(double value)
+    public static double Acos(double value)
     {
-        return 90.0 - ApproxAsin(value);
+        return 90.0 - Asin(value);
     }
 
     // Taylor series for arctan (returns degrees)
-    public static double ApproxAtan(double value)
+    public static double Atan(double value)
     {
         double x = value;
         double s = x;
@@ -164,7 +224,7 @@ namespace cgs
             s += sign * xP / n;
             sign *= -1;
         }
-        return FromApproxRad(s);
+        return FromRad(s);
     }
 
     
