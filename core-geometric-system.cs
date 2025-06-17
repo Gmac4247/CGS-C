@@ -83,14 +83,14 @@ namespace cgs
         
         public double Radius { get; set; }
 
-        public Sphere(double radius)
+        public Cone(double radius)
         {
             Radius = radius;
         } 
 
         public double Height { get; set; }
 
-        public Sphere(double height)
+        public Cone(double height)
         {
             Height = height;
         } 
