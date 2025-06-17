@@ -1,11 +1,11 @@
 using System;
 
-namespace CoreGeometricSystem
+namespace cgs
 {
     /// <summary>
     /// Provides alternative geometric formulas for area, circumference, and volume calculations.
     /// </summary>
-    public static class BasicGeometry
+    public static class bg
     {
       
         
