@@ -77,7 +77,5 @@ public static class Program
         var cone = new CgsCone(2.0, 5.0);
         Console.WriteLine("CgsCone volume: " + cone.Volume_);
 
-        var a = new CgsAngle(45);
-        Console.WriteLine("Sine of 45 degrees: " + a.Sin_());
     }
 }
