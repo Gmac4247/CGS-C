@@ -4,8 +4,8 @@
     <Authors>Gaal Sandor</Authors>
 <AuthorEmail>gmac4247@yahoo.com</AuthorEmail>
     <PackageId>CoreGeometricSystem</PackageId>
-    <Version>1.0.5</Version>
-    <Description>Exact geometric formulas for calculating circumference, area, and volume, and aligned trigonometry</Description>
+    <Version>1.0.6</Version>
+    <Description>Exact geometric formulas for calculating circumference, area, and volume</Description>
     <PackageTags>geometry;math;circle;sphere;cone;area;volume;empirical;exact;trigonometry</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
