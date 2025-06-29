@@ -22,6 +22,25 @@ public class CgsCircle
         return 3.2 * radius * radius;
     }
 
+    public static double SegmentArea(double radius, double height, object trig)
+{
+    double baseY = radius - height;
+
+    string acosExpr = $"acos({baseY} / {radius})";
+    var acosStr = CgsTrig.QueryAcos(acosExpr);
+    var angleMatch = Regex.Match(acosStr, @"rad\\(([^)]+)\\)");
+    if (!angleMatch.Success) throw new InvalidOperationException("acos parsing failed.");
+    double theta = double.Parse(angleMatch.Groups[1].Value);
+
+    string sinExpr = $"sin({theta})";
+    var sinStr = CgsTrig.QuerySin(theta);
+    var sinMatch = Regex.Match(sinStr, @"≈ ([0-9.]+)");
+    if (!sinMatch.Success) throw new InvalidOperationException("sin parsing failed.");
+    double sinTheta = double.Parse(sinMatch.Groups[1].Value);
+
+    return theta * radius * radius - sinTheta * baseY * radius;
+    }
+    
     public double Circumference_ => Circumference(Radius);
     public double Area_ => Area(Radius);
 }
