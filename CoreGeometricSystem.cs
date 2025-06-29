@@ -24,6 +24,7 @@ public class CgsCircle
 
     public static double SegmentArea(double radius, double height, object trig)
 {
+    Height = height;
     double baseY = radius - height;
 
     string acosExpr = $"acos({baseY} / {radius})";
@@ -43,6 +44,7 @@ public class CgsCircle
     
     public double Circumference_ => Circumference(Radius);
     public double Area_ => Area(Radius);
+    public double SegmentArea_ => SegmentArea(Radius, Height);
 }
 
 public class CgsCylinder
