@@ -24,9 +24,7 @@ public static class CgsCircle
 
     public static double SegmentArea(double radius, double height)
 {
-    public double Height { get; }
         
-    Height = height;
     double baseY = radius - height;
 
     string acosExpr = $"acos({baseY} / {radius})";
@@ -123,22 +121,3 @@ public static class CgsCone
    
 }
 
-
-
-// Demo usage
-public static class Program
-{
-    public static void Main()
-    {
-        var c = new CgsCircle(2.0);
-        Console.WriteLine("CgsCircle circumference: " + c.Circumference_);
-        Console.WriteLine("CgsCircle area: " + c.Area_);
-
-        var s = new CgsSphere(2.0);
-        Console.WriteLine("CgsSphere volume: " + s.Volume_);
-
-        var cone = new CgsCone(2.0, 5.0);
-        Console.WriteLine("CgsCone volume: " + cone.Volume_);
-
-    }
-}
