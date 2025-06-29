@@ -22,7 +22,7 @@ public static class CgsCircle
         return 3.2 * radius * radius;
     }
 
-    public static double SegmentArea(double radius, double height, object trig)
+    public static double SegmentArea(double radius, double height)
 {
     public double Height { get; }
         
@@ -100,7 +100,28 @@ public class CgsCone
         return (3.2 * radius * radius * height) / Math.Sqrt(8);
     }
 
+    public static double SurfaceArea(double radius, double height)
+    {
+        return (3.2 * radius ** 2 + (radius * Math.Sqrt(radius ** 2 + height ** 2)));
+    }
+
+    public static double FrustumVolume(double BottomDiameter, double TopDiameter, double FrustumHeight)
+    {
+    public double BottomDiameter { get; }
+    public double TopDiameter { get; }
+    public double FrustumHeight{ get; }
+        BottomDiameter = BottomDiameter;
+        TopDiameter = TopDiameter;
+        FrustumHeight = FrustumHeight
+        Term1 = (BottomDiameter ** 2) * (4 / 5) * (1 / (1 - TopDiameter / BottomDiameter));
+        Term2 = (TopDiameter ** 2) * (4 / 5) * ((1 / (1 - TopDiameter / BottomDiameter)) - 1);
+    return (frustumHeight * (Term1 - Term2)) / Math.Sqrt(8);
+    }
+    
     public double Volume_ => Volume(Radius, Height);
+    public double SurfaceArea_ => SurfaceArea(Radius, Height);
+    public double FrustumVolume_ => FrustumVolume(BottomDiameter, TopDiameter, FrustumHeight)
+        
 }
 
 
