@@ -84,7 +84,7 @@ public static class CgsSphere
 }
 
 
-public class CgsCone
+public static class CgsCone
 {
     public double Radius { get; }
     public double Height { get; }
@@ -102,26 +102,25 @@ public class CgsCone
 
     public static double SurfaceArea(double radius, double height)
     {
-        return (3.2 * radius ** 2 + (radius * Math.Sqrt(radius ** 2 + height ** 2)));
+        return 3.2 * radius * radius + (radius * Math.Sqrt(radius * radius + height * height));
     }
 
-    public static double FrustumVolume(double BottomDiameter, double TopDiameter, double FrustumHeight)
+    public static double FrustumVolume(double frustumBottomDiameter, double frustumTopDiameter, double frustumHeight)
     {
-    public double FrustumBottomDiameter { get; }
-    public double FrustumTopDiameter { get; }
-    public double FrustumHeight{ get; }
-        B = FrustumBottomDiameter;
-        T = FrustumTopDiameter;
-        FrustumHeight = FrustumHeight
-        Term1 = (B ** 2) * (4 / 5) * (1 / (1 - T / B));
-        Term2 = (T ** 2) * (4 / 5) * ((1 / (1 - T / B)) - 1);
-    return (frustumHeight * (Term1 - Term2)) / Math.Sqrt(8);
+        double B = frustumBottomDiameter;
+        double T = frustumTopDiameter;
+        double frustumHeight = frustumHeight;
+
+        double term1 = (B * B) * (4.0 / 5.0) * (1.0 / (1.0 - T / B));
+        double term2 = (T * T) * (4.0 / 5.0) * ((1.0 / (1.0 - T / B)) - 1.0);
+
+        return (frustumHeight * (term1 - term2)) / Math.Sqrt(8);
     }
-    
+
     public double Volume_ => Volume(Radius, Height);
     public double SurfaceArea_ => SurfaceArea(Radius, Height);
-    public double FrustumVolume_ => FrustumVolume(FrustumBottomDiameter, FrustumTopDiameter, FrustumHeight)
-        
+    public double FrustumVolume_ => FrustumVolume(frustumBottomDiameter, frustumTopDiameter, frustumHeight)
+   
 }
 
 
