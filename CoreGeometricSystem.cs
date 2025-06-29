@@ -105,21 +105,21 @@ public static class CgsCone
         return 3.2 * radius * radius + (radius * Math.Sqrt(radius * radius + height * height));
     }
 
-    public static double FrustumVolume(double frustumBottomDiameter, double frustumTopDiameter, double frustumHeight)
+    public static double FrustumVolume(double bottomDiameter, double topDiameter, double height)
     {
-        double B = frustumBottomDiameter;
-        double T = frustumTopDiameter;
-        double frustumHeight = frustumHeight;
+        double B = bottomDiameter;
+        double T = topDiameter;
+        double h = height;
 
         double term1 = (B * B) * (4.0 / 5.0) * (1.0 / (1.0 - T / B));
         double term2 = (T * T) * (4.0 / 5.0) * ((1.0 / (1.0 - T / B)) - 1.0);
 
-        return (frustumHeight * (term1 - term2)) / Math.Sqrt(8);
+        return (h * (term1 - term2)) / Math.Sqrt(8);
     }
 
     public double Volume_ => Volume(Radius, Height);
     public double SurfaceArea_ => SurfaceArea(Radius, Height);
-    public double FrustumVolume_ => FrustumVolume(frustumBottomDiameter, frustumTopDiameter, frustumHeight)
+    public double FrustumVolume_ => FrustumVolume(bottomDiameter, topDiameter, height)
    
 }
 
