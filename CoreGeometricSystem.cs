@@ -5,12 +5,6 @@ using System;
 
 public static class CgsCircle
 {
-    public double Radius { get; }
-
-    public CgsCircle(double radius)
-    {
-        Radius = radius;
-    }
 
     public static double Circumference(double radius)
     {
@@ -42,29 +36,21 @@ public static class CgsCircle
     return theta * radius * radius - sinTheta * baseY * radius;
     }
     
-    public double Circumference_ => Circumference(Radius);
-    public double Area_ => Area(Radius);
-    public double SegmentArea_ => SegmentArea(Radius, Height);
+    public double Circumference_ => Circumference(radius);
+    public double Area_ => Area(radius);
+    public double SegmentArea_ => SegmentArea(radius, height);
 }
 
 
 public static class CgsCylinder
 {
-    public double Radius { get; }
-    public double Height { get; }
-
-    public CgsCylinder(double radius, double height)
-    {
-        Radius = radius;
-        Height = height;
-    }
 
     public static double Volume(double radius, double height)
     {
         return (3.2 * radius * radius * height);
     }
 
-    public double Volume_ => Volume(Radius, Height);
+    public double Volume_ => Volume(radius, height);
 }
 
 
@@ -84,14 +70,6 @@ public static class CgsSphere
 
 public static class CgsCone
 {
-    public double Radius { get; }
-    public double Height { get; }
-
-    public CgsCone(double radius, double height)
-    {
-        Radius = radius;
-        Height = height;
-    }
 
     public static double Volume(double radius, double height)
     {
@@ -115,8 +93,8 @@ public static class CgsCone
         return (h * (term1 - term2)) / Math.Sqrt(8);
     }
 
-    public double Volume_ => Volume(Radius, Height);
-    public double SurfaceArea_ => SurfaceArea(Radius, Height);
+    public double Volume_ => Volume(radius, height);
+    public double SurfaceArea_ => SurfaceArea(radius, height);
     public double FrustumVolume_ => FrustumVolume(bottomDiameter, topDiameter, height)
    
 }
