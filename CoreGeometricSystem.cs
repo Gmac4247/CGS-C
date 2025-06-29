@@ -127,13 +127,14 @@ public static class CgsTrig
 {
     private static Dictionary<string, TrigEntry> _table;
 
-    public static void Load(string filePath)
+    public static void Load(string "./trig.json")
     {
-        var json = File.ReadAllText(filePath);
+        var json = File.ReadAllText("./trig.json");
         _table = JsonSerializer.Deserialize<Dictionary<string, TrigEntry>>(json);
     }
 
-  private static string FindClosest(string func, double value)
+
+    private static string FindClosest(string func, double value)
     {
         string bestKey = null;
         double minDiff = double.MaxValue;
