@@ -7,7 +7,7 @@ public static class CgsTrig
 {
     private static Dictionary<string, TrigEntry> _table;
 
-    public static void Load(string filePath)CgsTrig.Load("./trig.json");
+    public static void Load(string filePath)CgsTrig.Load("trig.json");
     {
         var json = File.ReadAllText(filePath);
         _table = JsonSerializer.Deserialize<Dictionary<string, TrigEntry>>(json);
