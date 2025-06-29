@@ -2,6 +2,7 @@
 // Classes: CgsCircle, CgsCylinder, CgsSphere, CgsCone
 
 using System;
+using System.Text.RegularExpressions;
 
 public static class CgsCircle
 {
@@ -36,10 +37,7 @@ public static class CgsCircle
     return theta * radius * radius - sinTheta * baseY * radius;
     }
     
-    public double Circumference_ => Circumference(radius);
-    public double Area_ => Area(radius);
-    public double SegmentArea_ => SegmentArea(radius, height);
-}
+    }
 
 
 public static class CgsCylinder
@@ -50,7 +48,6 @@ public static class CgsCylinder
         return (3.2 * radius * radius * height);
     }
 
-    public double Volume_ => Volume(radius, height);
 }
 
 
@@ -92,10 +89,6 @@ public static class CgsCone
 
         return (h * (term1 - term2)) / Math.Sqrt(8);
     }
-
-    public double Volume_ => Volume(radius, height);
-    public double SurfaceArea_ => SurfaceArea(radius, height);
-    public double FrustumVolume_ => FrustumVolume(bottomDiameter, topDiameter, height)
-   
+ 
 }
 
