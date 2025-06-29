@@ -3,7 +3,7 @@
 
 using System;
 
-public class CgsCircle
+public static class CgsCircle
 {
     public double Radius { get; }
 
@@ -24,6 +24,8 @@ public class CgsCircle
 
     public static double SegmentArea(double radius, double height, object trig)
 {
+    public double Height { get; }
+        
     Height = height;
     double baseY = radius - height;
 
@@ -47,7 +49,8 @@ public class CgsCircle
     public double SegmentArea_ => SegmentArea(Radius, Height);
 }
 
-public class CgsCylinder
+
+public static class CgsCylinder
 {
     public double Radius { get; }
     public double Height { get; }
@@ -66,83 +69,20 @@ public class CgsCylinder
     public double Volume_ => Volume(Radius, Height);
 }
 
-public class CgsSphere
+
+public static class CgsSphere
 {
-    public double? Radius { get; private set; }
-    public object CgsTrig { get; set; } 
-    public CapData Cap { get; private set; }
-
-    public CgsSphere(double? radius = null, object trig = null)
-    {
-        Radius = radius;
-        CgsTrig = trig;
-        Cap = null;
-    }
-
     public static double Volume(double radius)
     {
         return Math.Pow(Math.Sqrt(3.2) * radius, 3);
     }
 
-    public double? SphereVolume => Radius.HasValue ? Volume(Radius.Value) : null;
-
-    public override string ToString()
+    public static double CapVolume(double rCap, double height)
     {
-        return Radius.HasValue
-            ? $"Sphere(r={Radius}) ≈ Volume: {SphereVolume.Value:F5}"
-            : $"Sphere(r=unknown)";
-    }
-
-    public static double RSphere(double rCap, double h, Func<string, object, string> queryAtan, Func<string, object, string> querySin, object trig)
-    {
-        var atanStr = queryAtan($"atan({h} / {rCap})", trig);
-        var halfAngleMatch = System.Text.RegularExpressions.Regex.Match(atanStr, @"rad\(([^)]+)\)");
-        if (!halfAngleMatch.Success) throw new InvalidOperationException("Invalid atan result");
-        var halfAngle = double.Parse(halfAngleMatch.Groups[1].Value);
-
-        var angle = 2 * halfAngle;
-        var sinStr = querySin($"sin({angle})", trig);
-        var sinMatch = System.Text.RegularExpressions.Regex.Match(sinStr, @"≈ ([0-9.]+)");
-        if (!sinMatch.Success) throw new InvalidOperationException("Invalid sin result");
-        var sin = double.Parse(sinMatch.Groups[1].Value);
-
-        return rCap / sin;
-    }
-
-    public void AddCap(double height, double baseRadius, Func<string, object, string> queryAcos = null, Func<string, object, string> querySin = null)
-    {
-        double h = height;
-        double rCap = baseRadius;
-
-        if (!Radius.HasValue && queryAtan != null && querySin != null)
-        {
-            Radius = RSphere(rCap, h, queryAtan, querySin, Trig);
-        }
-
-        double capVolume = 1.6 * Math.Pow(rCap, 2) * Math.Sqrt(3.2) * h;
-
-        Cap = new CapData
-        {
-            H = h,
-            RCap = rCap,
-            CapVolume = capVolume
-        };
-    }
-
-    public double? CapVolume => Cap?.CapVolume;
-
-    public class CapData
-    {
-        public double H { get; set; }
-        public double RCap { get; set; }
-        public double CapVolume { get; set; }
-
-        public override string ToString()
-        {
-            return $"SphericalCap(radius={RCap}, height={H}) ≈ Volume: {CapVolume:F5}";
-        }
+        return 1.6 * rCap * rCap * Math.Sqrt(3.2) * height;
     }
 }
+
 
 public class CgsCone
 {
