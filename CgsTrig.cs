@@ -1,3 +1,8 @@
+// CgsTrig.cs - Approximation - based trigonometry lookup engine 
+// Classes: CgsTrig
+
+using System;
+
 public static class CgsTrig
 {
     private static Dictionary<string, TrigEntry> _table;
