@@ -29,13 +29,13 @@ public class CgsCircle
 public class CgsSphere
 {
     public double? Radius { get; private set; }
-    public object Trig { get; set; }  // Placeholder type—you may replace with your trig engine type
+    public object CgsTrig { get; set; } 
     public CapData Cap { get; private set; }
 
     public CgsSphere(double? radius = null, object trig = null)
     {
         Radius = radius;
-        Trig = trig;
+        CgsTrig = trig;
         Cap = null;
     }
 
