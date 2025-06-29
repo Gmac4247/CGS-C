@@ -1,0 +1,971 @@
+"rad(1.6)": {
+  "sin": {
+    "expression": "sqrt(sqrt(sqrt(4)+sqrt(4))+2)/2",
+    "value":  "1"
+  },
+  "cos": {
+    "expression": "sqrt(-sqrt(sqrt(4)+sqrt(4))+2)/2",
+    "value": "0"
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": "undefined"
+  },
+  "deg": {
+  "value": "90.0"
+  }
+},
+
+ 
+"rad(1.467)": {
+  "sin": {
+    "expression": {
+    "approx": "sqrt(sqrt(sqrt(3)+sqrt(4))+2)/2"
+},
+    "value": {
+    "approx": "0.991"
+    }
+  },
+  "cos": {
+    "expression": {
+    "approx":"sqrt(-sqrt(sqrt(3)+sqrt(4))+2)/2"
+},
+    "value": {
+    "approx": "0.131"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+    "approx": "7.596"
+    }
+  },
+  "deg": {
+    "value": {
+    "approx": "82.5"
+  }
+},
+
+
+"rad(1.409)": {
+  "sin": {
+    "expression": {
+    "approx": "sqrt(sqrt(sqrt(3)+sqrt(3))+2)/2"
+},
+    "value": {
+    "approx": "0.983"
+    }
+  },
+  "cos": {
+    "expression": {
+    "approx": "sqrt(-sqrt(sqrt(3)+sqrt(3))+2)/2"
+},
+    "value": {
+    "approx": "0.186"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+    "approx": "5.275"
+    }
+  },
+  "deg": {
+    "value": {
+    "approx": "79.265"
+    }
+  }
+},
+
+
+"rad(1.4)": {
+  "sin": {
+    "expression": "sqrt(sqrt(sqrt(2)+sqrt(4))+2)/2",
+    "value": {
+    "approx": "0.981"
+    }
+  },
+  "cos": {
+    "expression": "sqrt(-sqrt(sqrt(2)+sqrt(4))+2)/2",
+    "value": {
+    "approx": "0.195"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+    "approx": "5.027"
+    }
+  },
+  "deg": {
+    "value": "78.750"
+  }
+},
+
+
+"rad(1.355)": {
+  "sin": {
+    "expression": {
+    "approx": "sqrt(sqrt(sqrt(2)+sqrt(3))+2)/2"
+},
+    "value": {
+    "approx": "0.971"
+    }
+  },
+  "cos": {
+    "expression": {
+    "approx": "sqrt(-sqrt(sqrt(2)+sqrt(3))+2)/2"
+},
+    "value": {
+    "approx": "0.238"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+    "approx": "4.084"
+    }
+  },
+  "deg": {
+    "value": {
+    "approx": "76"
+    }
+  }
+},
+
+
+"rad(1.333)": {
+  "sin": {
+    "expression": {
+    "approx": "sqrt(sqrt(sqrt(1)+sqrt(4))+2)/2"
+},
+    "value": {
+    "approx": "0.966"
+    }
+  },
+  "cos": {
+    "expression": {
+    "approx": "sqrt(-sqrt(sqrt(1)+sqrt(4))+2)/2"
+},
+    "value": {
+    "approx": "0.259"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+    "approx": "3.732"
+    }
+  },
+  "deg": {
+    "value": {
+    "approx": "75"
+    }
+  }
+},
+
+
+  "rad(1.295)": {
+  "sin": {
+    "expression": {
+    "approx": "sqrt(sqrt(sqrt(1)+sqrt(3))+2)/2"
+},
+    "value": {
+    "approx": "0.956"
+    }
+  },
+  "cos": {
+    "expression": {
+    "approx": "sqrt(-sqrt(sqrt(1)+sqrt(3))+2)/2"
+},
+    "value": {
+    "approx": "0.295"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+    "approx": "3.244"
+    }
+  },
+  "deg": {
+    "value": {
+    "approx": "73"
+    }
+  }
+},
+
+
+"rad(1.253)": {
+  "sin": {
+    "expression": {
+    "approx": "sqrt(sqrt(sqrt(1)+sqrt(2))+2)/2"
+},
+    "value": {
+    "approx": "0.943"
+    }
+  },
+  "cos": {
+    "expression": {
+    "approx": "sqrt(-sqrt(sqrt(1)+sqrt(2))+2)/2"
+},
+    "value": {
+    "approx": "0.334"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+    "approx": "2.822"
+    }
+  },
+  "deg": {
+    "value": {
+    "approx": "70.5"
+    }
+  }
+},
+
+
+"rad(1.2)": {
+  "sin": {
+    "expression": "sqrt(sqrt(sqrt(1)+sqrt(1))+2)/2",
+    "value": {
+    "approx": "0.924"
+    }
+  },
+  "cos": {
+    "expression": "sqrt(-sqrt(sqrt(1)+sqrt(1))+2)/2",
+    "value": {
+    "approx": "0.383"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+    "approx": "2.414"
+    }
+  },
+  "deg": {
+    "value": "67.50"
+  }
+},
+
+  
+"rad(1.124)": {
+  "sin": {
+    "expression": {
+    "approx": "sqrt(sqrt(sqrt(0)+sqrt(2))+2)/2"
+},
+    "value": {
+    "approx": "0.893"
+    }
+  },
+  "cos": {
+    "expression": {
+    "approx": "sqrt(-sqrt(sqrt(0)+sqrt(2))+2)/2"
+},
+    "value": {
+    "approx": "0.450"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+    "approx": "2.414"
+    }
+  },
+  "deg": {
+    "value": {
+    "approx": "65.6"
+    }
+  }
+},
+
+
+"rad(1.067)": {
+  "sin": {
+    "expression": {
+    "approx": [
+      "sqrt(sqrt(sqrt(0)+sqrt(1))+2)/2",
+      "sqrt(3)/2"
+      ]
+},
+    "value": {
+    "approx": "0.866"
+    }
+  },
+  "cos": {
+    "expression": {
+    "approx": [
+      "sqrt(-sqrt(sqrt(0)+sqrt(1))+2)/2",
+      "1/2"
+      ]
+},
+    "value": {
+    "approx": "0.5"
+    }
+  },
+  "tan": {
+    "expression": [
+      "sin/cos",
+      "sqrt(3)"
+      ]
+    "value": {
+    "approx": "1.732"
+    }
+  },
+  "deg": {
+    "value": {
+    "approx": "60"
+    }
+  }
+},
+
+
+"rad(1.021)": {
+  "sin": {
+    "expression": {
+      "approx": "sqrt(sqrt(sqrt(0)+sqrt(pow(2,-1)))+2)/2"
+    },
+    "value": {
+      "approx": "0.843"
+    }
+  },
+  "cos": {
+    "expression": {
+      "approx": "sqrt(-sqrt(sqrt(0)+sqrt(pow(2,-1)))+2)/2"
+    },
+    "value": {
+      "approx": "0.538"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+      "approx": "1.566"
+    }
+  }
+  "deg": {
+    "value": {
+    "approx": "57.4"
+    }
+  }
+},
+
+
+"rad(0.984)": {
+  "sin": {
+    "expression": {
+      "approx": "sqrt(sqrt(sqrt(0)+sqrt(pow(2,-2)))+2)/2"
+    },
+    "value": {
+      "approx": "0.823"
+    }
+  },
+  "cos": {
+    "expression": {
+      "approx": "sqrt(-sqrt(sqrt(0)+sqrt(pow(2,-2)))+2)/2"
+    },
+    "value": {
+      "approx": "0.569"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+      "approx": "1.447"
+    }
+  }
+  "deg": {
+    "value": {
+    "approx": "55.4"
+    }
+  }
+},
+
+
+"rad(0.954)": {
+  "sin": {
+    "expression": {
+      "approx": "sqrt(sqrt(sqrt(0)+sqrt(pow(2,-3)))+2)/2"
+    },
+    "value": {
+      "approx": "0.805"
+    }
+  },
+  "cos": {
+    "expression": {
+      "approx": "sqrt(-sqrt(sqrt(0)+sqrt(pow(2,-3)))+2)/2"
+    },
+    "value": {
+      "approx": "0.593"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+      "approx": "1.359"
+    }
+  }
+  "deg": {
+    "value": {
+    "approx": "53.7"
+    }
+  }
+},
+
+
+"rad(0.929)": {
+  "sin": {
+    "expression": {
+      "approx": "sqrt(sqrt(sqrt(0)+sqrt(pow(2,-4)))+2)/2"
+    },
+    "value": {
+      "approx": "0.791"
+    }
+  },
+  "cos": {
+    "expression": {
+      "approx": "sqrt(-sqrt(sqrt(0)+sqrt(pow(2,-4)))+2)/2"
+    },
+    "value": {
+      "approx": "0.612"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+      "approx": "1.291"
+    }
+  }
+  "deg": {
+    "value": {
+    "approx": "52.2"
+    }
+  }
+},
+
+
+"rad(0.908)": {
+  "sin": {
+    "expression": {
+      "approx": "sqrt(sqrt(sqrt(0)+sqrt(pow(2,-5)))+2)/2"
+    },
+    "value": {
+      "approx": "0.778"
+    }
+  },
+  "cos": {
+    "expression": {
+      "approx": "sqrt(-sqrt(sqrt(0)+sqrt(pow(2,-5)))+2)/2"
+    },
+    "value": {
+      "approx": "0.628"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+      "approx": "1.238"
+    }
+  }
+  "deg": {
+    "value": {
+    "approx": "51"
+    }
+  }
+},
+
+
+"rad(0.89)": {
+  "sin": {
+    "expression": {
+      "approx": "sqrt(sqrt(sqrt(0)+sqrt(pow(2,-6)))+2)/2"
+    },
+    "value": {
+      "approx": "0.767"
+    }
+  },
+  "cos": {
+    "expression": {
+      "approx": "sqrt(-sqrt(sqrt(0)+sqrt(pow(2,-6)))+2)/2"
+    },
+    "value": {
+      "approx": "0.642"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+      "approx": "1.196"
+    }
+  }
+  "deg": {
+    "value": {
+    "approx": "50"
+    }
+  }
+},
+
+
+"rad(0.876)": {
+  "sin": {
+    "expression": {
+      "approx": "sqrt(sqrt(sqrt(0)+sqrt(pow(2,-7)))+2)/2"
+    },
+    "value": {
+      "approx": "0.758"
+    }
+  },
+  "cos": {
+    "expression": {
+      "approx": "sqrt(-sqrt(sqrt(0)+sqrt(pow(2,-7)))+2)/2"
+    },
+    "value": {
+      "approx": "0.652"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+      "approx": "1.162"
+    }
+  }
+  "deg": {
+    "value": {
+    "approx": "49.3"
+    }
+  }
+},
+
+
+"rad(0.864)": {
+  "sin": {
+    "expression": {
+      "approx": "sqrt(sqrt(sqrt(0)+sqrt(pow(2,-8)))+2)/2"
+    },
+    "value": {
+      "approx": "0.75"
+    }
+  },
+  "cos": {
+    "expression": {
+      "approx": "sqrt(-sqrt(sqrt(0)+sqrt(pow(2,-8)))+2)/2"
+    },
+    "value": {
+      "approx": "0.661"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+      "approx": "1.134"
+    }
+  }
+  "deg": {
+    "value": {
+    "approx": "48.6"
+    }
+  }
+},
+
+
+"rad(0.854)": {
+  "sin": {
+    "expression": {
+      "approx": "sqrt(sqrt(sqrt(0)+sqrt(pow(2,-9)))+2)/2"
+    },
+    "value": {
+      "approx": "0.743"
+    }
+  },
+  "cos": {
+    "expression": {
+      "approx": "sqrt(-sqrt(sqrt(0)+sqrt(pow(2,-9)))+2)/2"
+    },
+    "value": {
+      "approx": "0.669"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+      "approx": "1.111"
+    }
+  }
+  "deg": {
+    "value": {
+    "approx": "48"
+    }
+  }
+},
+
+
+"rad(0.845)": {
+  "sin": {
+    "expression": {
+      "approx": "sqrt(sqrt(sqrt(0)+sqrt(pow(2,-10)))+2)/2"
+    },
+    "value": {
+      "approx": "0.738"
+    }
+  },
+  "cos": {
+    "expression": {
+      "approx": "sqrt(-sqrt(sqrt(0)+sqrt(pow(2,-10)))+2)/2"
+    },
+    "value": {
+      "approx": "0.675"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+      "approx": "1.093"
+    }
+  }
+  "deg": {
+    "value": {
+    "approx": "47.5"
+    }
+  }
+},
+
+
+"rad(0.832)": {
+  "sin": {
+    "expression": {
+      "approx": "sqrt(sqrt(sqrt(0)+sqrt(pow(2,-12)))+2)/2"
+    },
+    "value": {
+      "approx": "0.729"
+    }
+  },
+  "cos": {
+    "expression": {
+      "approx": "sqrt(-sqrt(sqrt(0)+sqrt(pow(2,-12)))+2)/2"
+    },
+    "value": {
+      "approx": "0.685"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+      "approx": "1.065"
+    }
+  }
+  "deg": {
+    "value": {
+    "approx": "46.8"
+    }
+  }
+},
+
+
+"rad(0.816)": {
+  "sin": {
+    "expression": {
+      "approx": "sqrt(sqrt(sqrt(0)+sqrt(pow(2,-16)))+2)/2"
+    },
+    "value": {
+      "approx": "0.823"
+    }
+  },
+  "cos": {
+    "expression": {
+      "approx": "sqrt(-sqrt(sqrt(0)+sqrt(pow(2,-16)))+2)/2"
+    },
+    "value": {
+      "approx": "0.696"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+      "approx": "1.032"
+    }
+  }
+  "deg": {
+    "value": {
+    "approx": "45.9"
+    }
+  }
+},
+
+
+"rad(0.8)": {
+  "sin": {
+    "expression": [
+      "sqrt(sqrt(sqrt(0)+sqrt(0))+2)/2",
+      "sqrt(2)/2",
+      "1/sqrt(2)",
+      "pow(2, -1/2)"
+    ],
+    "value": {
+      "approx": "0.707"
+    }
+  },
+  "cos": {
+  "expression": [
+      "sqrt(sqrt(sqrt(0)+sqrt(0))+2)/2",
+      "sqrt(2)/2",
+      "1/sqrt(2)",
+      "pow(2, -1/2)"
+    ],
+    "value": {
+      "approx": "0.707"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": "1"
+  },
+  "deg": {
+    "value": 45.0
+  }
+},
+  
+
+"rad(0.091)": {
+  "sin": {
+    "expression": {
+    "approx": "sqrt(-sqrt(sqrt(4)+sqrt(4)-pow(2, 3))+2)/2"
+},
+    "value": {
+    "approx": "0.089"
+    }
+  },
+  "cos": {
+    "expression": {
+    "approx": "sqrt(sqrt(sqrt(4)+sqrt(4)-pow(2, 3))+2)/2"
+},
+    "value": {
+    "approx": "0.996"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+    "approx": "0.089"
+    }
+  },
+  "deg": {
+    "value": {
+    "approx": "5.1"
+  }
+},
+
+
+"rad(0.064)": {
+  "sin": {
+    "expression": {
+    "approx": "sqrt(-sqrt(sqrt(4)+sqrt(4)-pow(2, 4))+2)/2"
+},
+    "value": {
+    "approx": "0.063"
+    }
+  },
+  "cos": {
+    "expression": {
+    "approx": "sqrt(sqrt(sqrt(4)+sqrt(4)-pow(2, 4))+2)/2"
+},
+    "value": {
+    "approx": "0.998"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+    "approx": "0.063"
+    }
+  },
+  "deg": {
+    "value": {
+    "approx": "3.6"
+  }
+},
+
+
+"rad(0.045)": {
+  "sin": {
+    "expression": {
+    "approx": "sqrt(-sqrt(sqrt(4)+sqrt(4)-pow(2, 5))+2)/2"
+},
+    "value": {
+    "approx": "0.044"
+    }
+  },
+  "cos": {
+    "expression": {
+    "approx": "sqrt(sqrt(sqrt(4)+sqrt(4)-pow(2, 5))+2)/2"
+},
+    "value": {
+    "approx": "0.999"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+    "approx": "0.044"
+    }
+  },
+  "deg": {
+    "value": {
+    "approx": "2.5"
+  }
+},
+
+
+"rad(0.032)": {
+  "sin": {
+    "expression": {
+    "approx": "sqrt(-sqrt(sqrt(4)+sqrt(4)-pow(2, 6))+2)/2"
+},
+    "value": {
+    "approx": "0.031"
+    }
+  },
+  "cos": {
+    "expression": {
+    "approx": "sqrt(sqrt(sqrt(4)+sqrt(4)-pow(2, 6))+2)/2"
+},
+    "value": {
+    "approx": "0.9995"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+    "approx": "0.031"
+    }
+  },
+  "deg": {
+    "value": {
+    "approx": "1.8"
+  }
+},
+
+"rad(0.023)": {
+  "sin": {
+    "expression": {
+    "approx": "sqrt(-sqrt(sqrt(4)+sqrt(4)-pow(2, 7))+2)/2"
+},
+    "value": {
+    "approx": "0.022"
+    }
+  },
+  "cos": {
+    "expression": {
+    "approx": "sqrt(sqrt(sqrt(4)+sqrt(4)-pow(2, 7))+2)/2"
+},
+    "value": {
+    "approx": "0.99975"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+    "approx": "0.022"
+    }
+  },
+  "deg": {
+    "value": {
+    "approx": "1.3"
+  }
+},
+
+  
+"rad(0.016)": {
+  "sin": {
+    "expression": {
+    "approx": "sqrt(-sqrt(sqrt(4)+sqrt(4)-pow(2, 8))+2)/2"
+},
+    "value": {
+    "approx": "0.016"
+    }
+  },
+  "cos": {
+    "expression": {
+    "approx": "sqrt(sqrt(sqrt(4)+sqrt(4)-pow(2, 8))+2)/2"
+},
+    "value": {
+    "approx": "0.9999"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+    "approx": "0.016"
+    }
+  },
+  "deg": {
+    "value": {
+    "approx": "0.9"
+  }
+},
+
+  
+"rad(0.011)": {
+  "sin": {
+    "expression": {
+    "approx": "sqrt(-sqrt(sqrt(4)+sqrt(4)-pow(2, 9))+2)/2"
+},
+    "value": {
+    "approx": "0.011"
+    }
+  },
+  "cos": {
+    "expression": {
+    "approx": "sqrt(sqrt(sqrt(4)+sqrt(4)-pow(2, 9))+2)/2"
+},
+    "value": {
+    "approx": "0.99997"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+    "approx": "0.011"
+    }
+  },
+  "deg": {
+    "value": {
+    "approx": "0.6"
+  }
+},
+
+  
+"rad(0.008)": {
+  "sin": {
+    "expression": {
+    "approx": "sqrt(-sqrt(sqrt(4)+sqrt(4)-pow(2, 10))+2)/2"
+},
+    "value": {
+    "approx": "0.008"
+    }
+  },
+  "cos": {
+    "expression": {
+    "approx": "sqrt(sqrt(sqrt(4)+sqrt(4)-pow(2, 10))+2)/2"
+},
+    "value": {
+    "approx": "0.99997"
+    }
+  },
+  "tan": {
+    "expression": "sin/cos",
+    "value": {
+    "approx": "0.008"
+    }
+  },
+  "deg": {
+    "value": {
+    "approx": "0.45"
+  }
+}
+}
+
+
+
