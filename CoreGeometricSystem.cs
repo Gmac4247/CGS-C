@@ -45,6 +45,25 @@ public class CgsCircle
     public double Area_ => Area(Radius);
 }
 
+public class CgsCylinder
+{
+    public double Radius { get; }
+    public double Height { get; }
+
+    public CgsCylinder(double radius, double height)
+    {
+        Radius = radius;
+        Height = height;
+    }
+
+    public static double Volume(double radius, double height)
+    {
+        return (3.2 * radius * radius * height);
+    }
+
+    public double Volume_ => Volume(Radius, Height);
+}
+
 public class CgsSphere
 {
     public double? Radius { get; private set; }
