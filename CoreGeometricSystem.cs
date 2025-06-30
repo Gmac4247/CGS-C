@@ -1,5 +1,5 @@
 // CoreGeometricSystem.cs - Core Geometric System (Patch Library)
-// Classes: CgsCircle, CgsCylinder, CgsSphere, CgsCone
+// Classes: Rectangle, Cuboid, RegularPolygon, CgsCircle, CgsCylinder, CgsSphere, CgsCone, CgsPyramid
 
 using System;
 using System.Text.RegularExpressions;
