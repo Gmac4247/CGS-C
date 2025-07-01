@@ -167,7 +167,7 @@ private static string FindClosestInverseMatch(string funcType, double value)
     return bestKey;
 }
 
-public static string QueryAsin(string input)
+public static string QueryAsin(double x)
 {
     // Normalize input to extract numeric or symbolic expression
     var match = Regex.Match(input, @"asin\s*\(?([0-9./\s√-]+)\)?", RegexOptions.IgnoreCase);
@@ -204,7 +204,7 @@ public static string QueryAsin(string input)
     return "No match found.";
 }
 
-public static string QueryAcos(string input)
+public static string QueryAcos(double x)
 {
     // Match formats like "acos(0.5)" or "acos(1/2)"
     var match = Regex.Match(input, @"acos\s*\(?([0-9./\s√-]+)\)?", RegexOptions.IgnoreCase);
@@ -241,7 +241,7 @@ public static string QueryAcos(string input)
     return "No match found.";
 }
 
-public static string QueryAtan(string input)
+public static string QueryAtan(double x)
 {
     // Match formats like "atan(1.2)" or "atan(5/3)"
     var match = Regex.Match(input, @"atan\s*\(?([0-9./\s√-]+)\)?", RegexOptions.IgnoreCase);
