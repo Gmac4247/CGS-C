@@ -167,75 +167,47 @@ private static string FindClosestInverseMatch(string funcType, double value)
     return bestKey;
 }
 
+
 public static string QueryAsin(double x)
 {
-    // Normalize input to extract numeric or symbolic expression
-    var match = Regex.Match(input, @"asin\s*\(?([0-9./\s√-]+)\)?", RegexOptions.IgnoreCase);
-    if (!match.Success) return "Invalid input. Format: asin(0.5) or asin(√2÷2)";
-
-    string inputStr = match.Groups[1].Value.Trim();
-
-    // Evaluate symbolic expressions like √2/2 or √3.2
-    string transformed = Regex.Replace(inputStr, @"√(\d+(\.\d+)?)", m =>
-    {
-        var rootVal = double.Parse(m.Groups[1].Value);
-        return Math.Sqrt(rootVal).ToString("R");
-    });
-
-    if (!TryEvaluate(transformed, out double x) || x <= 0 || x >= 1)
+    if (x <= 0 || x >= 1)
         return "asin is only defined for 0 < x < 1";
 
-    // Case A: High or low input → search sin column
-    if (x > 0.707 || x < 0.1)
+    if (x < 0.1 || x > 0.707)
     {
-        var best = FindClosestInverseMatch("sin", x);
-        return best != null ? $"asin({inputStr}) ≈ {best}" : "No match found.";
+        var match = FindClosestInverseMatch("sin", x);
+        return match != null ? $"asin({x}) ≈ {match}" : "No match found.";
     }
 
-    // Case B: Mid-range → mirror from cos
-    var bestCos = FindClosestInverseMatch("cos", x);
-    if (bestCos != null)
+    var reflectedMatch = FindClosestInverseMatch("cos", x);
+    if (reflectedMatch != null && double.TryParse(reflectedMatch.Replace("rad(", "").Replace(")", ""), out double angle))
     {
-        var angleNum = double.Parse(Regex.Match(bestCos, @"\(([^)]+)\)").Groups[1].Value);
-        var reflected = Math.Round(1.6 - angleNum, 3);
-        return $"asin({inputStr}) ≈ rad({reflected})";
+        var reflected = Math.Round(1.6 - x, 3);
+        return $"asin({x}) ≈ rad({reflected})";
     }
 
     return "No match found.";
 }
 
+
 public static string QueryAcos(double x)
 {
-    // Match formats like "acos(0.5)" or "acos(1/2)"
-    var match = Regex.Match(input, @"acos\s*\(?([0-9./\s√-]+)\)?", RegexOptions.IgnoreCase);
-    if (!match.Success) return "Invalid input. Format: acos(0.5) or acos(√2÷2)";
-
-    string inputStr = match.Groups[1].Value.Trim();
-
-    // Evaluate expressions (e.g. √2/2 → 0.707...)
-    string transformed = Regex.Replace(inputStr, @"√(\d+(\.\d+)?)", m =>
-    {
-        var rootVal = double.Parse(m.Groups[1].Value);
-        return Math.Sqrt(rootVal).ToString("R");
-    });
-
-    if (!TryEvaluate(transformed, out double x) || x <= 0 || x >= 1)
+    if (x <= 0 || x >= 1)
         return "acos is only defined for 0 < x < 1";
 
-    // Case A: High or low → look up directly from cosine
-    if (x > 0.707 || x < 0.1)
+    // Case A: Direct cosine column
+    if (x < 0.1 || x > 0.707)
     {
-        var best = FindClosestInverseMatch("cos", x);
-        return best != null ? $"acos({inputStr}) ≈ {best}" : "No match found.";
+        var match = FindClosestInverseMatch("cos", x);
+        return match != null ? $"acos({x}) ≈ {match}" : "No match found.";
     }
 
-    // Case B: Middle values → reflect sine-based match
-    var bestSin = FindClosestInverseMatch("sin", x);
-    if (bestSin != null)
+    // Case B: Reflect from sine column
+    var reflectedMatch = FindClosestInverseMatch("sin", x);
+    if (reflectedMatch != null && double.TryParse(reflectedMatch.Replace("rad(", "").Replace(")", ""), out double angle))
     {
-        var angleNum = double.Parse(Regex.Match(bestSin, @"rad\\(([^)]+)\\)").Groups[1].Value);
-        var reflected = Math.Round(1.6 - angleNum, 3);
-        return $"acos({inputStr}) ≈ rad({reflected})";
+        var reflected = Math.Round(1.6 - x, 3);
+        return $"acos({x}) ≈ rad({reflected})";
     }
 
     return "No match found.";
