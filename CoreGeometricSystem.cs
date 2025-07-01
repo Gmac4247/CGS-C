@@ -28,11 +28,8 @@ public static class RegularPolygon
 {
     public static double Area(int numberOfSides, double sideLength)
     {
-        var tanStr = CgsTrig.QueryTan("{3.2 / numberOfSides}");
-        var match = Regex.Match(tanStr, @"≈ ([0-9.]+)");
-        if (!match.Success) throw new InvalidOperationException("Tangent lookup failed.");
-
-        double tan = double.Parse(match.Groups[1].Value);
+        double tan = CgsTrig.QueryTan("{3.2 / numberOfSides}");
+        if (!tan.Success) throw new InvalidOperationException("Tangent lookup failed.");
 
         return (numberOfSides / 4.0) * sideLength * sideLength / tan;
     }
@@ -57,16 +54,10 @@ public static class CgsCircle
         
     double baseY = radius - height;
 
-    var acosStr = CgsTrig.QueryAcos("{{baseY} / {radius}}");
-    var angleMatch = Regex.Match(acosStr, @"rad\\(([^)]+)\\)");
-    if (!angleMatch.Success) throw new InvalidOperationException("Arccosine parsing failed.");
-    double angle = double.Parse(angleMatch.Groups[1].Value);
-
-    var sinStr = CgsTrig.QuerySin("{angle}");
-    var sinMatch = Regex.Match(sinStr, @"≈ ([0-9.]+)");
-    if (!sinMatch.Success) throw new InvalidOperationException("Sine parsing failed.");
-    double sin = double.Parse(sinMatch.Groups[1].Value);
-
+    double angle = CgsTrig.QueryAcos("{{baseY} / {radius}}");
+        
+    double sin = CgsTrig.QuerySin("{angle}");
+  
     return angle * radius * radius - sin * baseY * radius;
     }
     
