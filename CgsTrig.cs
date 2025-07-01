@@ -215,29 +215,27 @@ public static string QueryAcos(double x)
 
 public static string QueryAtan(double x)
 {
-    // Match formats like "atan(1.2)" or "atan(5/3)"
-    var match = Regex.Match(input, @"atan\s*\(?([0-9./\s√-]+)\)?", RegexOptions.IgnoreCase);
-    if (!match.Success)
-        return "Invalid input. Format: atan(1.25) or atan(√2÷2)";
-
-    string inputStr = match.Groups[1].Value.Trim();
-
-    // Evaluate symbolic expressions like √2/2
-    string transformed = Regex.Replace(inputStr, @"√(\d+(\.\d+)?)", m =>
-    {
-        var rootVal = double.Parse(m.Groups[1].Value);
-        return Math.Sqrt(rootVal).ToString("R");
-    });
-
-    if (!TryEvaluate(transformed, out double x) || x <= 0)
+    if (x <= 0)
         return "atan is only defined for positive input values";
 
-    // Step 1: Search tangent column for closest match
-    var bestTan = FindClosestInverseMatch("tan", x);
-    if (bestTan != null)
-        return $"atan({inputStr}) ≈ {bestTan}";
+    string bestKey = null;
+    double minDiff = double.MaxValue;
 
-    return "No match found.";
-}
+    foreach (var kvp in TrigTable)
+    {
+        var radKey = kvp.Key;
+        if (!kvp.Value.TryGetValue("tan", out var tanSection)) continue;
+        if (!tanSection.TryGetValue("value", out var valueSection)) continue;
+        if (!valueSection.TryGetValue("approx", out var approxStr)) continue;
+        if (!double.TryParse(approxStr, out double approx)) continue;
 
+        double diff = Math.Abs(approx - x);
+        if (diff < minDiff)
+        {
+            minDiff = diff;
+            bestKey = radKey;
+        }
+    }
+
+    return bestKey != null ? $"atan({x}) ≈ {bestKey}" : "No match found.";
 }
