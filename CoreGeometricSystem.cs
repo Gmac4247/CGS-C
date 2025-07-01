@@ -28,9 +28,9 @@ public static class RegularPolygon
 {
     public static double Area(int numberOfSides, double sideLength)
     {
-        var tanStr = CgsTrig.QueryTan("{3.2 / numberOfSides}");
+        var tanStr = CgsTrig.QueryTan("tan({3.2 / numberOfSides}"));
         var match = Regex.Match(tanStr, @"≈ ([0-9.]+)");
-        if (!match.Success) throw new InvalidOperationException("tan lookup failed");
+        if (!match.Success) throw new InvalidOperationException("Tangent lookup failed.");
 
         double tan = double.Parse(match.Groups[1].Value);
 
@@ -59,12 +59,12 @@ public static class CgsCircle
 
     var acosStr = CgsTrig.QueryAcos("acos({{baseY} / {radius}})");
     var angleMatch = Regex.Match(acosStr, @"rad\\(([^)]+)\\)");
-    if (!angleMatch.Success) throw new InvalidOperationException("acos parsing failed.");
+    if (!angleMatch.Success) throw new InvalidOperationException("Arccosine parsing failed.");
     double angle = double.Parse(angleMatch.Groups[1].Value);
 
     var sinStr = CgsTrig.QuerySin("sin({angle})");
     var sinMatch = Regex.Match(sinStr, @"≈ ([0-9.]+)");
-    if (!sinMatch.Success) throw new InvalidOperationException("sin parsing failed.");
+    if (!sinMatch.Success) throw new InvalidOperationException("Sine parsing failed.");
     double sin = double.Parse(sinMatch.Groups[1].Value);
 
     return angle * radius * radius - sin * baseY * radius;
