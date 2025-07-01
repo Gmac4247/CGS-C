@@ -116,7 +116,7 @@ public static class CgsCone
         var baseArea = CgsCircle.Area(bottomRadius);
         var topArea = CgsCircle.Area(topRadius);
 
-        var ratio = bottomRadius / topRadius;
+        var ratio = topRadius / bottomRadius;
         var inv = 1.0 / (1.0 - ratio);
         var volume = frustumHeight * (baseArea * inv - topArea * (inv - 1.0)) / Math.Sqrt(8);
 
@@ -138,7 +138,7 @@ public static class CgsPyramid
         var baseArea = RegularPolygon.Area(numberOfSides, bottomEdge);
         var topArea = RegularPolygon.Area(numberOfSides, topEdge);
 
-        var ratio = bottomEdge / topEdge;
+        var ratio = topEdge / bottomEdge;
         var inv = 1.0 / (1.0 - ratio);
         var volume = frustumHeight * (baseArea * inv - topArea * (inv - 1.0)) / Math.Sqrt(8);
 
