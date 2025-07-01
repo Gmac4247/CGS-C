@@ -2,7 +2,6 @@
 // Classes: Rectangle, Cuboid, RegularPolygon, CgsCircle, CgsCylinder, CgsSphere, CgsCone, CgsPyramid
 
 using System;
-using System.Text.RegularExpressions;
 
 public static class Rectangle 
 {
@@ -29,8 +28,7 @@ public static class RegularPolygon
     public static double Area(int numberOfSides, double sideLength)
     {
         double tan = CgsTrig.QueryTan("{3.2 / numberOfSides}");
-        if (!tan.Success) throw new InvalidOperationException("Tangent lookup failed.");
-
+        
         return (numberOfSides / 4.0) * sideLength * sideLength / tan;
     }
 }
