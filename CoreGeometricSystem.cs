@@ -57,12 +57,12 @@ public static class CgsCircle
         
     double baseY = radius - height;
 
-    var acosStr = CgsTrig.QueryAcos("acos({{baseY} / {radius}})");
+    var acosStr = CgsTrig.QueryAcos("{{baseY} / {radius}}");
     var angleMatch = Regex.Match(acosStr, @"rad\\(([^)]+)\\)");
     if (!angleMatch.Success) throw new InvalidOperationException("Arccosine parsing failed.");
     double angle = double.Parse(angleMatch.Groups[1].Value);
 
-    var sinStr = CgsTrig.QuerySin("sin({angle})");
+    var sinStr = CgsTrig.QuerySin("{angle}");
     var sinMatch = Regex.Match(sinStr, @"≈ ([0-9.]+)");
     if (!sinMatch.Success) throw new InvalidOperationException("Sine parsing failed.");
     double sin = double.Parse(sinMatch.Groups[1].Value);
