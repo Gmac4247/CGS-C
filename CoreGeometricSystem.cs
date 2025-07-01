@@ -28,7 +28,7 @@ public static class RegularPolygon
 {
     public static double Area(int numberOfSides, double sideLength)
     {
-        var tanStr = CgsTrig.QueryTan("tan({3.2 / numberOfSides}"));
+        var tanStr = CgsTrig.QueryTan("{3.2 / numberOfSides}");
         var match = Regex.Match(tanStr, @"≈ ([0-9.]+)");
         if (!match.Success) throw new InvalidOperationException("Tangent lookup failed.");
 
