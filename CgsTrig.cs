@@ -127,12 +127,15 @@ private static bool TryEvaluate(string input, out double result)
 
         if (x > 0.1 && x < 0.8)
         {
-            double reflected = Math.Round(1.6 - x, 3);
-            string reflectedKey = $"rad({reflected:0.000})";
-            if (_table.TryGetValue(reflectedKey, out var refEntry) && refEntry.tan?.approx is string refVal)
-                return $"tan({x}) ≈ tan({reflected}) ≈ {refVal}";
-
-            return $"tan({x}) ≈ tan({reflected}) ≈ {FindClosest("tan", reflected)}";
+    double reflected = Math.Round(1.6 - x, 3);
+    string reflectedKey = $"rad({reflected:0.000})";
+    if (_table.TryGetValue(reflectedKey, out var refEntry) && refEntry.tan?.approx is string refVal)
+    {
+        if (double.TryParse(refVal, out double reflectedTan))
+            return $"tan({x}) ≈ 1 / tan({reflected}) ≈ {Math.Round(1.0 / reflectedTan, 4)}";
+        return $"tan({x}) ≈ 1 / tan({reflected}) ≈ 1 / ({refVal})";
+    }
+    return $"tan({x}) ≈ 1 / tan({reflected}) ≈ 1 / ({FindClosest("tan", reflected)})";
         }
 
         return "Invalid input.";
