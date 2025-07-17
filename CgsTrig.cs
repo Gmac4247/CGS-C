@@ -1,244 +1,103 @@
-// CgsTrig.cs - Approximation - based trigonometry lookup engine 
-// Classes: CgsTrig
-
-using System;
-
-public static class CgsTrig
-{
-    private static Dictionary<string, TrigEntry> _table;
-
-    public static void Load(string filePath)CgsTrig.Load("./trig.json");
-    {
-        var json = File.ReadAllText(filePath);
-        _table = JsonSerializer.Deserialize<Dictionary<string, TrigEntry>>(json);
-    }
-
-
-    private static string FindClosest(string func, double value)
-    {
-        string bestKey = null;
-        double minDiff = double.MaxValue;
-
-        foreach (var pair in _table)
-        {
-            if (!pair.Value.TryGetApprox(func, out string approx)) continue;
-
-            double keyVal = double.Parse(pair.Key.Replace("rad(", "").Replace(")", ""));
-            double diff = Math.Abs(keyVal - value);
-
-            if (diff < minDiff)
-            {
-                minDiff = diff;
-                bestKey = pair.Key;
-            }
-        }
-
-        return bestKey != null && _table[bestKey].TryGetApprox(func, out string result)
-            ? $"{func}({bestKey}) ≈ {result}"
-            : "Approximately";
-    }
-
-    private static bool TryGetApprox(this TrigEntry entry, string func, out string result)
-    {
-        result = func switch
-        {
-            "sin" => entry.sin?.approx,
-            "cos" => entry.cos?.approx,
-            "tan" => entry.tan?.approx,
-            "asin" => entry.asin?.approx,
-            "acos" => entry.acos?.approx,
-            "atan" => entry.atan?.approx,
-            _ => null
-        };
-        return result != null;
-    }
-
-private static bool TryEvaluate(string input, out double result)
-{
-    try
-    {
-        var data = new DataTable();
-        object eval = data.Compute(input.Replace("/", "/"), null);
-        result = Convert.ToDouble(eval);
-        return true;
-    }
-    catch
-    {
-        result = 0;
-        return false;
-    }
+public class TrigEntry {
+    public double? Sin { get; set; }
+    public double? Cos { get; set; }
+    public double? Tan { get; set; }
+    public double Deg { get; set; }
 }
 
-   public static string QuerySin(double x)
-    {
-        string radKey = $"rad({x:0.000})";
+public static readonly Dictionary<string, TrigEntry> Trig = new() {
+    ["rad(1.6)"] = new TrigEntry { Sin = 1, Cos = 0, Tan = null, Deg = 90.0 },
+    ["rad(1.555)"] = new TrigEntry { Sin = 0.999, Cos = 0.044, Tan = 22.9, Deg = 87.5 },
+    ["rad(1.536)"] = new TrigEntry { Sin = 0.998, Cos = 0.063, Tan = 15.9, Deg = 86.4 },
+    ["rad(1.509)"] = new TrigEntry { Sin = 0.996, Cos = 0.089, Tan = 11.2, Deg = 84.9 },
+    ["rad(1.467)"] = new TrigEntry { Sin = 0.991, Cos = 0.131, Tan = 7.596, Deg = 82.5 },
+    ["rad(1.409)"] = new TrigEntry { Sin = 0.983, Cos = 0.186, Tan = 5.275, Deg = 79.265 },
+    ["rad(1.4)"] = new TrigEntry { Sin = 0.981, Cos = 0.195, Tan = 5.027, Deg = 78.750 },
+    ["rad(1.355)"] = new TrigEntry { Sin = 0.971, Cos = 0.238, Tan = 4.084, Deg = 76 },
+    ["rad(1.333)"] = new TrigEntry { Sin = 0.966, Cos = 0.259, Tan = 3.732, Deg = 75 },
+    ["rad(1.295)"] = new TrigEntry { Sin = 0.956, Cos = 0.295, Tan = 3.244, Deg = 73 },
+    ["rad(1.253)"] = new TrigEntry { Sin = 0.943, Cos = 0.334, Tan = 2.822, Deg = 70.5 },
+    ["rad(1.2)"] = new TrigEntry { Sin = 0.924, Cos = 0.383, Tan = 2.414, Deg = 67.5 },
+    ["rad(1.124)"] = new TrigEntry { Sin = 0.893, Cos = 0.450, Tan = 1.98, Deg = 65.6 },
+    ["rad(1.067)"] = new TrigEntry { Sin = 0.866, Cos = 0.5, Tan = 1.732, Deg = 60 },
+    ["rad(1.021)"] = new TrigEntry { Sin = 0.843, Cos = 0.538, Tan = 1.566, Deg = 57.4 },
+    ["rad(0.984)"] = new TrigEntry { Sin = 0.823, Cos = 0.569, Tan = 1.447, Deg = 55.4 },
+    ["rad(0.954)"] = new TrigEntry { Sin = 0.805, Cos = 0.593, Tan = 1.359, Deg = 53.7 },
+    ["rad(0.929)"] = new TrigEntry { Sin = 0.791, Cos = 0.612, Tan = 1.291, Deg = 52.2 },
+    ["rad(0.908)"] = new TrigEntry { Sin = 0.778, Cos = 0.628, Tan = 1.238, Deg = 51 },
+    ["rad(0.89)"] = new TrigEntry { Sin = 0.767, Cos = 0.642, Tan = 1.196, Deg = 50 },
+    ["rad(0.876)"] = new TrigEntry { Sin = 0.758, Cos = 0.652, Tan = 1.162, Deg = 49.3 },
+    ["rad(0.864)"] = new TrigEntry { Sin = 0.75, Cos = 0.661, Tan = 1.134, Deg = 48.6 },
+    ["rad(0.854)"] = new TrigEntry { Sin = 0.743, Cos = 0.669, Tan = 1.111, Deg = 48 },
+    ["rad(0.845)"] = new TrigEntry { Sin = 0.738, Cos = 0.675, Tan = 1.093, Deg = 47.5 },
+    ["rad(0.832)"] = new TrigEntry { Sin = 0.729, Cos = 0.685, Tan = 1.065, Deg = 46.8 },
+    ["rad(0.816)"] = new TrigEntry { Sin = 0.823, Cos = 0.696, Tan = 1.032, Deg = 45.9 },
+    ["rad(0.8)"] = new TrigEntry { Sin = 0.707, Cos = 0.707, Tan = 1, Deg = 45.0 },
+    ["rad(0.091)"] = new TrigEntry { Sin = 0.089, Cos = 0.996, Tan = 0.089, Deg = 5.1 },
+    ["rad(0.064)"] = new TrigEntry { Sin = 0.063, Cos = 0.998, Tan = 0.063, Deg = 3.6 },
+    ["rad(0.045)"] = new TrigEntry { Sin = 0.044, Cos = 0.999, Tan = 0.044, Deg = 2.5 },
+    ["rad(0.032)"] = new TrigEntry { Sin = 0.031, Cos = 0.9995, Tan = 0.031, Deg = 1.8 },
+    ["rad(0.023)"] = new TrigEntry { Sin = 0.022, Cos = 0.99975, Tan = 0.022, Deg = 1.3 },
+    ["rad(0.016)"] = new TrigEntry { Sin = 0.016, Cos = 0.9999, Tan = 0.016, Deg = 0.9 },
+    ["rad(0.011)"] = new TrigEntry { Sin = 0.011, Cos = 0.99997, Tan = 0.011, Deg = 0.6 },
+    ["rad(0.008)"] = new TrigEntry { Sin = 0.008, Cos = 0.99997, Tan = 0.008, Deg = 0.45 }
+};
 
-        if (_table.TryGetValue(radKey, out var entry) && entry.cos?.approx is string val)
-            return $"sin({x}) ≈ {val}";
-
-        if ((x > 0.8 && x < 1.6) || (x > 0 && x < 0.1))
-            return $"sin({x}) ≈ {FindClosest("cos", x)}";
-
-        if (x > 0.1 && x < 0.8)
-        {
-            double reflected = Math.Round(1.6 - x, 3);
-            string reflectedKey = $"rad({reflected:0.000})";
-            if (_table.TryGetValue(reflectedKey, out var refEntry) && refEntry.cos?.approx is string refVal)
-                return $"sin({x}) ≈ cos({reflected}) ≈ {refVal}";
-
-            return $"sin({x}) ≈ cos({reflected}) ≈ {FindClosest("cos", reflected)}";
-        }
-
-        return "Invalid input.";
-    }
-
- public static string QueryCos(double x)
-    {
-        string radKey = $"rad({x:0.000})";
-
-        if (_table.TryGetValue(radKey, out var entry) && entry.cos?.approx is string val)
-            return $"cos({x}) ≈ {val}";
-
-        if ((x > 0.8 && x < 1.6) || (x > 0 && x < 0.1))
-            return $"cos({x}) ≈ {FindClosest("cos", x)}";
-
-        if (x > 0.1 && x < 0.8)
-        {
-            double reflected = Math.Round(1.6 - x, 3);
-            string reflectedKey = $"rad({reflected:0.000})";
-            if (_table.TryGetValue(reflectedKey, out var refEntry) && refEntry.sin?.approx is string refVal)
-                return $"cos({x}) ≈ sin({reflected}) ≈ {refVal}";
-
-            return $"cos({x}) ≈ sin({reflected}) ≈ {FindClosest("sin", reflected)}";
-        }
-
-        return "Invalid input.";
-    }
-
-    public static string QueryTan(double x)
-    {
-        string radKey = $"rad({x:0.000})";
-
-        if (_table.TryGetValue(radKey, out var entry) && entry.tan?.approx is string val)
-            return $"tan({x}) ≈ {val}";
-
-        if ((x > 0.8 && x < 1.6) || (x > 0 && x < 0.1))
-            return $"tan({x}) ≈ {FindClosest("tan", x)}";
-
-        if (x > 0.1 && x < 0.8)
-        {
-    double reflected = Math.Round(1.6 - x, 3);
-    string reflectedKey = $"rad({reflected:0.000})";
-    if (_table.TryGetValue(reflectedKey, out var refEntry) && refEntry.tan?.approx is string refVal)
-    {
-        if (double.TryParse(refVal, out double reflectedTan))
-            return $"tan({x}) ≈ 1 / tan({reflected}) ≈ {Math.Round(1.0 / reflectedTan, 4)}";
-        return $"tan({x}) ≈ 1 / tan({reflected}) ≈ 1 / ({refVal})";
-    }
-    return $"tan({x}) ≈ 1 / tan({reflected}) ≈ 1 / ({FindClosest("tan", reflected)})";
-        }
-
-        return "Invalid input.";
-    }
-
-  
-private static string FindClosestInverseMatch(string funcType, double value)
-{
-    string bestKey = null;
+public static string ClosestRad(double radian) {
+    string closestKey = null;
     double minDiff = double.MaxValue;
 
-    foreach (var kvp in _table)
-    {
-        var approxStr = funcType switch
-        {
-            "sin" => kvp.Value.sin?.approx,
-            "cos" => kvp.Value.cos?.approx,
-            _ => null
-        };
-
-        if (double.TryParse(approxStr, out double approx))
-        {
-            double diff = Math.Abs(approx - value);
-            if (diff < minDiff)
-            {
-                minDiff = diff;
-                bestKey = kvp.Key;
-            }
-        }
-    }
-
-    return bestKey;
-}
-
-
-public static string QueryAsin(double x)
-{
-    if (x <= 0 || x >= 1)
-        return "asin is only defined for 0 < x < 1";
-
-    if (x < 0.1 || x > 0.707)
-    {
-        var match = FindClosestInverseMatch("sin", x);
-        return match != null ? $"asin({x}) ≈ {match}" : "No match found.";
-    }
-
-    var reflectedMatch = FindClosestInverseMatch("cos", x);
-    if (reflectedMatch != null && double.TryParse(reflectedMatch.Replace("rad(", "").Replace(")", ""), out double angle))
-    {
-        var reflected = Math.Round(1.6 - x, 3);
-        return $"asin({x}) ≈ rad({reflected})";
-    }
-
-    return "No match found.";
-}
-
-
-public static string QueryAcos(double x)
-{
-    if (x <= 0 || x >= 1)
-        return "acos is only defined for 0 < x < 1";
-
-    // Case A: Direct cosine column
-    if (x < 0.1 || x > 0.707)
-    {
-        var match = FindClosestInverseMatch("cos", x);
-        return match != null ? $"acos({x}) ≈ {match}" : "No match found.";
-    }
-
-    // Case B: Reflect from sine column
-    var reflectedMatch = FindClosestInverseMatch("sin", x);
-    if (reflectedMatch != null && double.TryParse(reflectedMatch.Replace("rad(", "").Replace(")", ""), out double angle))
-    {
-        var reflected = Math.Round(1.6 - x, 3);
-        return $"acos({x}) ≈ rad({reflected})";
-    }
-
-    return "No match found.";
-}
-
-public static string QueryAtan(double x)
-{
-    if (x <= 0)
-        return "atan is only defined for positive input values";
-
-    string bestKey = null;
-    double minDiff = double.MaxValue;
-
-    foreach (var kvp in TrigTable)
-    {
-        var radKey = kvp.Key;
-        if (!kvp.Value.TryGetValue("tan", out var tanSection)) continue;
-        if (!tanSection.TryGetValue("value", out var valueSection)) continue;
-        if (!valueSection.TryGetValue("approx", out var approxStr)) continue;
-        if (!double.TryParse(approxStr, out double approx)) continue;
-
-        double diff = Math.Abs(approx - x);
-        if (diff < minDiff)
-        {
+    foreach (var key in Trig.Keys) {
+        if (!key.StartsWith("rad(")) continue;
+        string num = key.Substring(4, key.Length - 5);
+        if (!double.TryParse(num, out var test)) continue;
+        double diff = Math.Abs(test - radian);
+        if (diff < minDiff) {
             minDiff = diff;
-            bestKey = radKey;
+            closestKey = key;
         }
     }
 
-    return bestKey != null ? $"atan({x}) ≈ {bestKey}" : "No match found.";
+    return closestKey;
 }
+
+public static double? Sin(double radian) {
+    if (radian < 0 || radian > 1.6) return null;
+
+    string key = $"rad({radian:F3})";
+    if (Trig.ContainsKey(key) && Trig[key].Sin.HasValue) return Trig[key].Sin;
+
+    if (radian > 0.1 && radian < 0.8) {
+        double reflected = 1.6 - radian;
+        string reflectedKey = $"rad({reflected:F3})";
+        if (Trig.ContainsKey(reflectedKey) && Trig[reflectedKey].Cos.HasValue)
+            return Trig[reflectedKey].Cos;
+
+        string fallback = ClosestRad(reflected);
+        return fallback != null ? Trig[fallback].Cos : null;
+    }
+
+    string fallbackKey = ClosestRad(radian);
+    return fallbackKey != null ? Trig[fallbackKey].Sin : null;
+}
+
+public static double? Cos(double radian) {
+    if (radian < 0 || radian > 1.6) return null;
+
+    string key = $"rad({radian:F3})";
+    if (Trig.ContainsKey(key) && Trig[key].Cos.HasValue) return Trig[key].Cos;
+
+    if (radian > 0.1 && radian < 0.8) {
+        double reflected = 1.6 - radian;
+        string reflectedKey = $"rad({reflected:F3})";
+        if (Trig.ContainsKey(reflectedKey) && Trig[reflectedKey].Sin.HasValue)
+            return Trig[reflectedKey].Sin;
+
+        string fallback = ClosestRad(reflected);
+        return fallback != null ? Trig[fallback].Sin : null;
+    }
+
+    string fallbackKey = ClosestRad(radian);
+    return fallbackKey != null ? Trig[fallbackKey].Cos : null;
+}
+
