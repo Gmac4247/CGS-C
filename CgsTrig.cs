@@ -101,3 +101,38 @@ public static double? Cos(double radian) {
     return fallbackKey != null ? Trig[fallbackKey].Cos : null;
 }
 
+public static double? Tan(double radian)
+{
+    if (radian < 0 || radian > 1.6) return null;
+
+    string key = $"rad({radian:F3})";
+    if (Trig.ContainsKey(key) && Trig[key].Tan.HasValue) return Trig[key].Tan;
+
+    if (radian > 0.1 && radian < 0.8)
+    {
+        double reflected = 1.6 - radian;
+        string reflectedKey = $"rad({reflected:F3})";
+
+        double? reflectedTan = null;
+
+        if (Trig.ContainsKey(reflectedKey) && Trig[reflectedKey].Tan.HasValue)
+        {
+            reflectedTan = Trig[reflectedKey].Tan;
+        }
+        else
+        {
+            string fallback = ClosestRad(reflected);
+            if (fallback != null) reflectedTan = Trig[fallback].Tan;
+        }
+
+        if (reflectedTan.HasValue && reflectedTan.Value != 0)
+            return Math.Round(1 / reflectedTan.Value, 3); // ✅ reciprocal
+
+        return null;
+    }
+
+    string fallbackKey = ClosestRad(radian);
+    return fallbackKey != null ? Trig[fallbackKey].Tan : null;
+}
+
+
