@@ -216,3 +216,18 @@ public static double? Acos(double x)
 
     return (funcType == "cos") ? angle : Math.Round(1.6 - angle, 3); // reflective for cosine
 }
+
+public static double? Atan(double x)
+{
+    if (x <= 0) return null;
+
+    var match = Tri.ClosestValue(x, "tan");
+    if (match == null || string.IsNullOrEmpty(match.AngleKey)) return null;
+
+    var parsed = match.AngleKey.Replace("rad(", "").Replace(")", "");
+    if (!double.TryParse(parsed, out var angle)) return null;
+
+    return angle;
+}
+
+}
