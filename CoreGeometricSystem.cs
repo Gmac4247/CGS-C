@@ -27,14 +27,14 @@ public static class RegularPolygon
 {
     public static double Area(int numberOfSides, double sideLength)
     {
-        double tan = CgsTrig.QueryTan("{3.2 / numberOfSides}");
+        double tan = Tri.Tan("{3.2 / numberOfSides}");
         
         return (numberOfSides / 4.0) * sideLength * sideLength / tan;
     }
 }
 
 
-public static class CgsCircle
+public static class Circle
 {
 
     public static double Circumference(double radius)
@@ -52,9 +52,9 @@ public static class CgsCircle
         
     double baseY = radius - height;
 
-    double angle = CgsTrig.QueryAcos("{{baseY} / {radius}}");
+    double angle = Tri.Acos("{{baseY} / {radius}}");
         
-    double sin = CgsTrig.QuerySin("{angle}");
+    double sin = Tri.Sin("{angle}");
   
     return angle * radius * radius - sin * baseY * radius;
     }
@@ -62,7 +62,7 @@ public static class CgsCircle
     }
 
 
-public static class CgsCylinder
+public static class Cylinder
 {
 
     public static double Volume(double radius, double height)
@@ -73,7 +73,7 @@ public static class CgsCylinder
 }
 
 
-public static class CgsSphere
+public static class Sphere
 {
     public static double Volume(double radius)
     {
@@ -87,7 +87,7 @@ public static class CgsSphere
 }
 
 
-public static class CgsCone
+public static class Cone
 {
 
     public static double Volume(double radius, double height)
@@ -102,8 +102,8 @@ public static class CgsCone
 
     public static double FrustumVolume(double bottomRadius, double topRadius, double frustumHeight)
     {
-        var baseArea = CgsCircle.Area(bottomRadius);
-        var topArea = CgsCircle.Area(topRadius);
+        var baseArea = Circle.Area(bottomRadius);
+        var topArea = Circle.Area(topRadius);
 
         var ratio = topRadius / bottomRadius;
         var inv = 1.0 / (1.0 - ratio);
@@ -114,7 +114,7 @@ public static class CgsCone
 }
 
  
-public static class CgsPyramid
+public static class Pyramid
 {
     public static double Volume(int numberOfSides, double bottomEdge, double height)
     {
