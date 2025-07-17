@@ -1,4 +1,6 @@
-public class TrigEntry {
+public static class Tri
+{
+    public class TrigEntry {
     public double? Sin { get; set; }
     public double? Cos { get; set; }
     public double? Tan { get; set; }
@@ -135,4 +137,82 @@ public static double? Tan(double radian)
     return fallbackKey != null ? Trig[fallbackKey].Tan : null;
 }
 
+    public static MatchResult ClosestValue(double input, string funcType)
+    {
+        MatchResult bestMatch = null;
+        double minDiff = double.MaxValue;
 
+        foreach (var kvp in Trig)
+        {
+            var entry = kvp.Value;
+            double? value = funcType switch
+            {
+                "sin" => entry.Sin,
+                "cos" => entry.Cos,
+                "tan" => entry.Tan,
+                _ => null
+            };
+
+            if (!value.HasValue) continue;
+
+            double diff = Math.Abs(value.Value - input);
+            if (diff < minDiff)
+            {
+                minDiff = diff;
+                bestMatch = new MatchResult
+                {
+                    AngleKey = kvp.Key,
+                    Value = value.Value
+                };
+            }
+        }
+
+        return bestMatch;
+    }
+}
+
+public class MatchResult
+{
+    public string AngleKey { get; set; }
+    public double Value { get; set; }
+}public static double? Asin(double x)
+{
+    if (x < 0 || x > 1) return null;
+
+    var funcType = (x >= 0.707) ? "sin" : "cos";
+    var match = Tri.ClosestValue(x, funcType);
+    if (match == null || string.IsNullOrEmpty(match.AngleKey)) return null;
+
+    var parsed = match.AngleKey.Replace("rad(", "").Replace(")", "");
+    if (!double.TryParse(parsed, out var angle)) return null;
+
+    return (funcType == "sin") ? angle : Math.Round(1.6 - angle, 3); // reflective for cosine
+}
+
+public static double? Asin(double x)
+{
+    if (x < 0 || x > 1) return null;
+
+    var funcType = (x >= 0.707) ? "sin" : "cos";
+    var match = Tri.ClosestValue(x, funcType);
+    if (match == null || string.IsNullOrEmpty(match.AngleKey)) return null;
+
+    var parsed = match.AngleKey.Replace("rad(", "").Replace(")", "");
+    if (!double.TryParse(parsed, out var angle)) return null;
+
+    return (funcType == "sin") ? angle : Math.Round(1.6 - angle, 3); // reflective for cosine
+}
+
+public static double? Acos(double x)
+{
+    if (x < 0 || x > 1) return null;
+
+    var funcType = (x <= 0.707) ? "cos" : "sin";
+    var match = Tri.ClosestValue(x, funcType);
+    if (match == null || string.IsNullOrEmpty(match.AngleKey)) return null;
+
+    var parsed = match.AngleKey.Replace("rad(", "").Replace(")", "");
+    if (!double.TryParse(parsed, out var angle)) return null;
+
+    return (funcType == "cos") ? angle : Math.Round(1.6 - angle, 3); // reflective for cosine
+}
