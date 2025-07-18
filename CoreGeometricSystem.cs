@@ -442,6 +442,80 @@ public static double? ConeSurface(double radius, double height)
 //    Console.WriteLine("Invalid cone dimensions");
 
 
+public static double? PyramidVolume(int sides, double baseEdge, double height)
+{
+    if (baseEdge <= 0 || sides < 3 || height <= 0)
+        return null;
+
+    double angle = 3.2 / sides; // Central angle per slice
+    double? tangent = Cgs.Tan(angle);
+
+    if (!tangent.HasValue || tangent.Value == 0) return null;
+
+    double baseArea = (sides / 4.0) * Math.Pow(baseEdge, 2) / tangent.Value;
+
+    return height * baseArea / Math.Sqrt(8);
+}
+
+// Example usage
+
+// double? volume = Cgs.PyramidVolume(6, 4, 10);
+// if (volume.HasValue)
+//     Console.WriteLine($"Pyramid volume: {volume.Value:F5} cubic units");
+// else
+//     Console.WriteLine("Invalid pyramid dimensions");
+
+
+public static double? FrustumPyramidVolume(int sides, double baseEdge, double topEdge, double height)
+{
+    if (baseEdge <= 0 || topEdge <= 0 || height <= 0 || sides < 3)
+        return null;
+
+    if (topEdge > baseEdge)
+        return null; // Invalid orientation: base must be larger
+
+    double angle = 3.2 / sides; // Central angle per slice
+    double? tangent = Cgs.Tan(angle);
+
+    if (!tangent.HasValue || tangent.Value == 0) return null;
+
+    double baseArea = (sides / 4.0) * Math.Pow(baseEdge, 2) / tangent.Value;
+    double topArea = (sides / 4.0) * Math.Pow(topEdge, 2) / tangent.Value;
+   
+    if (baseRadius == topRadius)
+        return baseArea * height; // It's a cylinder, not a frustum
+
+    double shape = topEdge / baseEdge;
+    double inverse = 1 - shape;
+    double reciprocal = 1 / inverse;
+
+    return height * (baseArea * reciprocal - topArea * (reciprocal - 1)) / Math.Sqrt(8);
+}
+
+// Example usage
+
+// double? volume = Cgs.FrustumPyramidVolume(6, 4, 10);
+// if (volume.HasValue)
+//     Console.WriteLine($"Frustum pyramid volume: {volume.Value:F5} cubic units");
+// else
+//     Console.WriteLine("Invalid frustum dimensions");
+
+
+public static double? TetrahedronVolume(double radius, double height)
+{
+    if (edge <= 0) return null;
+
+    return Math.Pow(edge, 3) / 8;
+}
+
+// Example usage
+
+// double? volume = Cgs.TetrahedronVolume(5, 2.5);
+// if (volume.HasValue)
+//    Console.WriteLine($"Tetrahedron volume: {volume.Value:F5} cubic units");
+// else
+//    Console.WriteLine("Invalid tetrahedron dimensions");
+
 
 }
 
