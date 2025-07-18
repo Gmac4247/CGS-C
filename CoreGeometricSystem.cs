@@ -1,6 +1,6 @@
 using System;
 
-public static class Tri
+public static class Cgs
 {
     public class TrigEntry {
     public double? Sin { get; set; }
@@ -182,7 +182,7 @@ public class MatchResult
     if (x < 0 || x > 1) return null;
 
     var funcType = (x >= 0.707) ? "sin" : "cos";
-    var match = Tri.ClosestValue(x, funcType);
+    var match = Cgs.ClosestValue(x, funcType);
     if (match == null || string.IsNullOrEmpty(match.AngleKey)) return null;
 
     var parsed = match.AngleKey.Replace("rad(", "").Replace(")", "");
@@ -196,7 +196,7 @@ public static double? Asin(double x)
     if (x < 0 || x > 1) return null;
 
     var funcType = (x >= 0.707) ? "sin" : "cos";
-    var match = Tri.ClosestValue(x, funcType);
+    var match = Cgs.ClosestValue(x, funcType);
     if (match == null || string.IsNullOrEmpty(match.AngleKey)) return null;
 
     var parsed = match.AngleKey.Replace("rad(", "").Replace(")", "");
@@ -210,7 +210,7 @@ public static double? Acos(double x)
     if (x < 0 || x > 1) return null;
 
     var funcType = (x <= 0.707) ? "cos" : "sin";
-    var match = Tri.ClosestValue(x, funcType);
+    var match = Cgs.ClosestValue(x, funcType);
     if (match == null || string.IsNullOrEmpty(match.AngleKey)) return null;
 
     var parsed = match.AngleKey.Replace("rad(", "").Replace(")", "");
@@ -223,7 +223,7 @@ public static double? Atan(double x)
 {
     if (x <= 0) return null;
 
-    var match = Tri.ClosestValue(x, "tan");
+    var match = Cgs.ClosestValue(x, "tan");
     if (match == null || string.IsNullOrEmpty(match.AngleKey)) return null;
 
     var parsed = match.AngleKey.Replace("rad(", "").Replace(")", "");
@@ -232,138 +232,36 @@ public static double? Atan(double x)
     return angle;
 }
 
-}
 
-
-public static class Rectangle 
-{
-
-    public static double Area(double width, double length)
+    public static double? TriangleArea(double side1, double side2, double side3)
     {
-        return width * length;
-    }
-}
-    
+        // 💡 Validity check
+        if (side1 + side2 <= side3 || side2 + side3 <= side1 || side3 + side1 <= side2)
+            return null;
 
-public static class Cuboid 
-{
+        double s = (side1 + side2 + side3) / 2;
+        double product = s * (s - side1) * (s - side2) * (s - side3);
 
-    public static double Volume(double width, double length, double height)
-    {
-        return width * length * height;
-    }
-}
-    
-    
-public static class RegularPolygon
-{
-    public static double Area(int numberOfSides, double sideLength)
-    {
-        double tan = Tri.Tan("{3.2 / numberOfSides}");
-        
-        return (numberOfSides / 4.0) * sideLength * sideLength / tan;
-    }
-}
+        // 🧪 Negative or invalid area means bad triangle
+        if (product < 0) return null;
 
-
-public static class Circle
-{
-
-    public static double Circumference(double radius)
-    {
-        return 6.4 * radius;
+        return Math.Sqrt(product);
     }
 
-    public static double Area(double radius)
-    {
-        return 3.2 * radius * radius;
-    }
+// Example usage
 
-    public static double SegmentArea(double radius, double height)
-{
-        
-    double baseY = radius - height;
-
-    double angle = Tri.Acos("{{baseY} / {radius}}");
-        
-    double sin = Tri.Sin("{angle}");
-  
-    return angle * radius * radius - sin * baseY * radius;
-    }
-    
-    }
+// double? area = Cgs.TriangleArea(3, 4, 5);
+// if (area.HasValue)
+//    Console.WriteLine($"Area: {area.Value:F5} square units");
+// else
+//    Console.WriteLine("Invalid triangle");
 
 
-public static class Cylinder
-{
 
-    public static double Volume(double radius, double height)
-    {
-        return (3.2 * radius * radius * height);
-    }
+
+
 
 }
 
 
-public static class Sphere
-{
-    public static double Volume(double radius)
-    {
-        return Math.Pow(Math.Sqrt(3.2) * radius, 3);
-    }
 
-    public static double CapVolume(double rCap, double height)
-    {
-        return 1.6 * rCap * rCap * Math.Sqrt(3.2) * height;
-    }
-}
-
-
-public static class Cone
-{
-
-    public static double Volume(double radius, double height)
-    {
-        return (3.2 * radius * radius * height) / Math.Sqrt(8);
-    }
-
-    public static double SurfaceArea(double radius, double height)
-    {
-        return 3.2 * radius * radius + (radius * Math.Sqrt(radius * radius + height * height));
-    }
-
-    public static double FrustumVolume(double bottomRadius, double topRadius, double frustumHeight)
-    {
-        var baseArea = Circle.Area(bottomRadius);
-        var topArea = Circle.Area(topRadius);
-
-        var ratio = topRadius / bottomRadius;
-        var inv = 1.0 / (1.0 - ratio);
-        var volume = frustumHeight * (baseArea * inv - topArea * (inv - 1.0)) / Math.Sqrt(8);
-
-        return volume;
-    }
-}
-
- 
-public static class Pyramid
-{
-    public static double Volume(int numberOfSides, double bottomEdge, double height)
-    {
-        var baseArea = RegularPolygon.Area(numberOfSides, bottomEdge);
-        return baseArea * height / Math.Sqrt(8);
-    }
-
-    public static double FrustumVolume(int numberOfSides, double bottomEdge, double topEdge, double frustumHeight)
-    {
-        var baseArea = RegularPolygon.Area(numberOfSides, bottomEdge);
-        var topArea = RegularPolygon.Area(numberOfSides, topEdge);
-
-        var ratio = topEdge / bottomEdge;
-        var inv = 1.0 / (1.0 - ratio);
-        var volume = frustumHeight * (baseArea * inv - topArea * (inv - 1.0)) / Math.Sqrt(8);
-
-        return volume;
-    }
-}
- 
