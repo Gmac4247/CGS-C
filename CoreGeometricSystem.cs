@@ -1,6 +1,8 @@
 using System;
 
 public static class Cgs
+
+    // Lookup-based trigonometry functions 
 {
     public class TrigEntry {
     public double? Sin { get; set; }
@@ -9,6 +11,8 @@ public static class Cgs
     public double Deg { get; set; }
 }
 
+    // The lookup table 
+    
 public static readonly Dictionary<string, TrigEntry> Trig = new() {
     ["rad(1.6)"] = new TrigEntry { Sin = 1, Cos = 0, Tan = null, Deg = 90.0 },
     ["rad(1.555)"] = new TrigEntry { Sin = 0.999, Cos = 0.044, Tan = 22.9, Deg = 87.5 },
@@ -47,6 +51,8 @@ public static readonly Dictionary<string, TrigEntry> Trig = new() {
     ["rad(0.008)"] = new TrigEntry { Sin = 0.008, Cos = 0.99997, Tan = 0.008, Deg = 0.45 }
 };
 
+    // Helper to find the closest radian match
+    
 public static string ClosestRad(double radian) {
     string closestKey = null;
     double minDiff = double.MaxValue;
@@ -139,6 +145,8 @@ public static double? Tan(double radian)
     return fallbackKey != null ? Trig[fallbackKey].Tan : null;
 }
 
+    // Helper to find the closest sine, cosine or tangent match
+    
     public static MatchResult ClosestValue(double input, string funcType)
     {
         MatchResult bestMatch = null;
