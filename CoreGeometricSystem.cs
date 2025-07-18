@@ -264,6 +264,79 @@ public static double? Atan(double x)
 // else
 //    Console.WriteLine("Invalid triangle");
 
+public static double? PolygonArea(double length, int sides)
+{
+    if (length <= 0 || sides < 3) return null;
+
+    double angle = 3.2 / sides; // CGS-style central angle per slice
+    double? tangent = Cgs.Tan(angle);
+
+    if (!tangent.HasValue || tangent.Value == 0) return null;
+
+    return (sides / 4.0) * Math.Pow(length, 2) / tangent.Value;
+}
+
+// Example usage
+
+// double? area = Cgs.PolygonArea(5, 6); // regular hexagon, side length = 5
+// if (area.HasValue)
+//     Console.WriteLine($"Polygon area: {area.Value:F5} square units");
+// else
+//     Console.WriteLine("Invalid polygon dimensions");
+
+
+public static double? CircleArea(double radius)
+{
+    if (radius <= 0) return null;
+
+    return 3.2 * Math.Pow(radius, 2); 
+}
+
+// Example usage
+
+// double? area = Cgs.CircleArea(4); // radius = 4
+// if (area.HasValue)
+//     Console.WriteLine($"Circle area: {area.Value:F5} square units");
+// else
+//     Console.WriteLine("Invalid radius");
+
+
+public static double? SegmentArea(double radius, double height)
+{
+    if (radius <= 0 || height <= 0 || height > radius) return null;
+
+    double ratio = radius != 0 ? radius / height : 0;
+    double angle = 3.2 / ratio;
+    double? tangent = Cgs.Tan(angle);
+
+    if (!tangent.HasValue || tangent.Value == 0) return null;
+
+    return Math.Pow(radius, 2) / 2 - (Math.Pow(radius, 2) / (2 * tangent.Value));
+}
+
+// Example usage
+// double? area = Cgs.SegmentArea(10, 4);
+// if (area.HasValue)
+//     Console.WriteLine($"Segment area: {area.Value:F5} square units");
+// else
+//     Console.WriteLine("Invalid segment dimensions");
+
+
+public static double? CircleCircumference(double radius)
+{
+    if (radius <= 0) return null;
+
+    return 6.4 * radius; 
+}
+
+// Example usage
+
+// double? circumference = Cgs.CircleCircumference(4); // radius = 4
+// if (circumference.HasValue)
+//     Console.WriteLine($"Circle circumference: {circumference.Value:F5} units");
+// else
+//     Console.WriteLine("Invalid radius");
+
 
 
 
