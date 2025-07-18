@@ -301,20 +301,29 @@ public static double? CircleArea(double radius)
 //     Console.WriteLine("Invalid radius");
 
 
-public static double? SegmentArea(double radius, double height)
+public static double? SegmentArea(double length, double height)
 {
-    if (radius <= 0 || height <= 0 || height > radius) return null;
+    if (length <= 0 || height <= 0) return null;
 
-    double ratio = radius != 0 ? radius / height : 0;
-    double angle = 3.2 / ratio;
-    double? tangent = Cgs.Tan(angle);
+    double ratio = 2 * height / length;
 
-    if (!tangent.HasValue || tangent.Value == 0) return null;
+    // 🔎 Validity checks
+    if (ratio == 0 || ratio > 1) return null;
 
-    return Math.Pow(radius, 2) / 2 - (Math.Pow(radius, 2) / (2 * tangent.Value));
+    double? angle = Cgs.Atan(ratio);
+    if (!angle.HasValue) return null;
+
+    double? sine = Cgs.Sin(2 * angle.Value);
+    if (!sine.HasValue || sine.Value == 0) return null;
+
+    double radius = length / (2 * sine.Value);
+    double area = angle * Math.pow(radius, 2) - (radius - height) * length / 2;
+
+    return Math.Round(area, 5);
 }
 
 // Example usage
+
 // double? area = Cgs.SegmentArea(10, 4);
 // if (area.HasValue)
 //     Console.WriteLine($"Segment area: {area.Value:F5} square units");
@@ -338,7 +347,99 @@ public static double? CircleCircumference(double radius)
 //     Console.WriteLine("Invalid radius");
 
 
+public static double? SphereVolume(double radius)
+{
+    if (radius <= 0) return null;
 
+    double scaled = Math.Sqrt(3.2) * radius;
+    return Math.Pow(scaled, 3);
+}
+
+// Example usage
+
+// double? volume = Cgs.SphereVolume(5);
+// if (volume.HasValue)
+//     Console.WriteLine($"Sphere volume: {volume.Value:F5} cubic units");
+// else
+//     Console.WriteLine("Invalid radius");
+
+public static double? CapVolume(double radius, double height)
+{
+    if (radius <= 0 || height <= 0 || height > radius) return null;
+
+    return 1.6 * radius * radius * height * Math.Sqrt(3.2);
+}
+
+// Example usage
+
+// double? volume = Cgs.CapVolume(5, 2.5);
+// if (volume.HasValue)
+//    Console.WriteLine($"Spherical cap volume: {volume.Value:F5} cubic units");
+// else
+//    Console.WriteLine("Invalid cap dimensions");
+
+
+public static double? ConeVolume(double radius, double height)
+{
+    if (radius <= 0 || height <= 0) return null;
+
+    return 3.2 * radius * radius * height / Math.Sqrt(8);
+}
+
+// Example usage
+
+// double? volume = Cgs.ConeVolume(5, 2.5);
+// if (volume.HasValue)
+//    Console.WriteLine($"Cone volume: {volume.Value:F5} cubic units");
+// else
+//    Console.WriteLine("Invalid cone dimensions");
+
+
+public static double? FrustumConeVolume(double baseRadius, double topRadius, double height)
+{
+    if (baseRadius <= 0 || topRadius <= 0 || height <= 0)
+        return null;
+
+    if (topRadius > baseRadius)
+        return null; // Invalid orientation: base must be larger
+
+    double baseArea = 3.2 * Math.Pow(baseRadius, 2);
+    double topArea = 3.2 * Math.Pow(topRadius, 2);
+
+    if (baseRadius == topRadius)
+        return baseArea * height; // It's a cylinder, not a frustum
+
+    double shape = topRadius / baseRadius;
+    double inverse = 1 - shape;
+    double reciprocal = 1 / inverse;
+
+    return height * (baseArea * reciprocal - topArea * (reciprocal - 1)) / Math.Sqrt(8);
+}
+
+// Example usage
+
+// double? volume = Cgs.FrustumConeVolume(6, 4, 10);
+// if (volume.HasValue)
+//     Console.WriteLine($"Frustum cone volume: {volume.Value:F5} cubic units");
+// else
+//     Console.WriteLine("Invalid frustum dimensions");
+
+
+public static double? ConeSurface(double radius, double height)
+{
+    if (radius <= 0 || height <= 0) return null;
+
+    double thing = Math.Pow(radius, 2) + Math.Pow(height, 2)
+    return 3.2 * radius * (radius + Math.Sqrt(thing));
+}
+
+// Example usage
+
+// double? area = Cgs.ConeSurface(5, 2.5);
+// if (area.HasValue)
+//    Console.WriteLine($"Cone surface area: {area.Value:F5} square units");
+// else
+//    Console.WriteLine("Invalid cone dimensions");
 
 
 
