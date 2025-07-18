@@ -4,7 +4,7 @@
     <Authors>Gaal Sandor</Authors>
 <AuthorEmail>gmac4247@yahoo.com</AuthorEmail>
     <PackageId>CoreGeometricSystem</PackageId>
-    <Version>1.6.0</Version>
+    <Version>1.6.2</Version>
     <Description>Exact geometric formulas for calculating circumference, area, and volume</Description>
     <PackageTags>geometry;math;exact-circumference;ecact-circle-area;exact-sphere-volume;exact-cone-volume;exact-formulas</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
