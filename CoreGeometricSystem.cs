@@ -243,14 +243,14 @@ public static double? Atan(double x)
 
     public static double? TriangleArea(double side1, double side2, double side3)
     {
-        // 💡 Validity check
+        // Validity check
         if (side1 + side2 <= side3 || side2 + side3 <= side1 || side3 + side1 <= side2)
             return null;
 
         double s = (side1 + side2 + side3) / 2;
         double product = s * (s - side1) * (s - side2) * (s - side3);
 
-        // 🧪 Negative or invalid area means bad triangle
+        // Negative or invalid area means bad triangle
         if (product < 0) return null;
 
         return Math.Sqrt(product);
@@ -307,7 +307,7 @@ public static double? SegmentArea(double length, double height)
 
     double ratio = 2 * height / length;
 
-    // 🔎 Validity checks
+    // Validity checks
     if (ratio == 0 || ratio > 1) return null;
 
     double? angle = Cgs.Atan(ratio);
@@ -483,7 +483,7 @@ public static double? FrustumPyramidVolume(int sides, double baseEdge, double to
     double topArea = (sides / 4.0) * Math.Pow(topEdge, 2) / tangent.Value;
    
     if (baseRadius == topRadius)
-        return baseArea * height; // It's a cylinder, not a frustum
+        return baseArea * height; // It's a block, not a frustum
 
     double shape = topEdge / baseEdge;
     double inverse = 1 - shape;
