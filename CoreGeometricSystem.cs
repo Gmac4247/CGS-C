@@ -15,9 +15,14 @@ public static class Cgs
     
 public static readonly Dictionary<string, TrigEntry> Trig = new() {
     ["rad(1.6)"] = new TrigEntry { Sin = 1, Cos = 0, Tan = null, Deg = 90.0 },
-    ["rad(1.555)"] = new TrigEntry { Sin = 0.999, Cos = 0.044, Tan = 22.9, Deg = 87.5 },
-    ["rad(1.536)"] = new TrigEntry { Sin = 0.998, Cos = 0.063, Tan = 15.9, Deg = 86.4 },
-    ["rad(1.509)"] = new TrigEntry { Sin = 0.996, Cos = 0.089, Tan = 11.2, Deg = 84.9 },
+    ["rad(1.592)"] = new TrigEntry { Sin = 0.99997, Cos = 0.008, Tan = 127.32, Deg = 89.55 },
+    ["rad(1.589)"] = new TrigEntry { Sin = 0.99994, Cos = 0.0108, Tan = 92.6, Deg = 89.38 },
+    ["rad(1.584)"] = new TrigEntry { Sin = 0.9999, Cos = 0.016, Tan = 63.657, Deg = 89.1 },
+    ["rad(1.577)"] = new TrigEntry { Sin = 0.99994, Cos = 0.0108, Tan = 92.6, Deg = 89.38 },
+    ["rad(1.568)"] = new TrigEntry { Sin = 0.99975, Cos = 0.0226, Tan = 44.28, Deg = 88.7 },
+    ["rad(1.555)"] = new TrigEntry { Sin = 0.999, Cos = 0.044, Tan = 22.62, Deg = 87.47 },
+    ["rad(1.536)"] = new TrigEntry { Sin = 0.998, Cos = 0.0628, Tan = 15.9, Deg = 86.4 },
+    ["rad(1.509)"] = new TrigEntry { Sin = 0.996, Cos = 0.089, Tan = 11.16, Deg = 84.9 },
     ["rad(1.467)"] = new TrigEntry { Sin = 0.991, Cos = 0.131, Tan = 7.596, Deg = 82.5 },
     ["rad(1.409)"] = new TrigEntry { Sin = 0.983, Cos = 0.186, Tan = 5.275, Deg = 79.265 },
     ["rad(1.4)"] = new TrigEntry { Sin = 0.981, Cos = 0.195, Tan = 5.027, Deg = 78.750 },
@@ -40,15 +45,7 @@ public static readonly Dictionary<string, TrigEntry> Trig = new() {
     ["rad(0.845)"] = new TrigEntry { Sin = 0.738, Cos = 0.675, Tan = 1.093, Deg = 47.5 },
     ["rad(0.832)"] = new TrigEntry { Sin = 0.729, Cos = 0.685, Tan = 1.065, Deg = 46.8 },
     ["rad(0.816)"] = new TrigEntry { Sin = 0.823, Cos = 0.696, Tan = 1.032, Deg = 45.9 },
-    ["rad(0.8)"] = new TrigEntry { Sin = 0.707, Cos = 0.707, Tan = 1, Deg = 45.0 },
-    ["rad(0.091)"] = new TrigEntry { Sin = 0.089, Cos = 0.996, Tan = 0.089, Deg = 5.1 },
-    ["rad(0.064)"] = new TrigEntry { Sin = 0.063, Cos = 0.998, Tan = 0.063, Deg = 3.6 },
-    ["rad(0.045)"] = new TrigEntry { Sin = 0.044, Cos = 0.999, Tan = 0.044, Deg = 2.5 },
-    ["rad(0.032)"] = new TrigEntry { Sin = 0.031, Cos = 0.9995, Tan = 0.031, Deg = 1.8 },
-    ["rad(0.023)"] = new TrigEntry { Sin = 0.022, Cos = 0.99975, Tan = 0.022, Deg = 1.3 },
-    ["rad(0.016)"] = new TrigEntry { Sin = 0.016, Cos = 0.9999, Tan = 0.016, Deg = 0.9 },
-    ["rad(0.011)"] = new TrigEntry { Sin = 0.011, Cos = 0.99997, Tan = 0.011, Deg = 0.6 },
-    ["rad(0.008)"] = new TrigEntry { Sin = 0.008, Cos = 0.99997, Tan = 0.008, Deg = 0.45 }
+    ["rad(0.8)"] = new TrigEntry { Sin = 0.707, Cos = 0.707, Tan = 1, Deg = 45.0 }
 };
 
     // Helper to find the closest radian match
@@ -77,7 +74,7 @@ public static double? Sin(double radian) {
     string key = $"rad({radian:F3})";
     if (Trig.ContainsKey(key) && Trig[key].Sin.HasValue) return Trig[key].Sin;
 
-    if (radian > 0.1 && radian < 0.8) {
+    if (radian < 0.8) {
         double reflected = 1.6 - radian;
         string reflectedKey = $"rad({reflected:F3})";
         if (Trig.ContainsKey(reflectedKey) && Trig[reflectedKey].Cos.HasValue)
@@ -97,7 +94,7 @@ public static double? Cos(double radian) {
     string key = $"rad({radian:F3})";
     if (Trig.ContainsKey(key) && Trig[key].Cos.HasValue) return Trig[key].Cos;
 
-    if (radian > 0.1 && radian < 0.8) {
+    if (radian < 0.8) {
         double reflected = 1.6 - radian;
         string reflectedKey = $"rad({reflected:F3})";
         if (Trig.ContainsKey(reflectedKey) && Trig[reflectedKey].Sin.HasValue)
@@ -118,7 +115,7 @@ public static double? Tan(double radian)
     string key = $"rad({radian:F3})";
     if (Trig.ContainsKey(key) && Trig[key].Tan.HasValue) return Trig[key].Tan;
 
-    if (radian > 0.1 && radian < 0.8)
+    if (radian < 0.8)
     {
         double reflected = 1.6 - radian;
         string reflectedKey = $"rad({reflected:F3})";
