@@ -14,6 +14,7 @@ public static class Cgs
     // The lookup table 
     
 public static readonly Dictionary<string, TrigEntry> Trig = new() {
+    
     ["rad(1.6)"] = new TrigEntry { Sin = 1, Cos = 0, Tan = null, Deg = 90.0 },
     ["rad(1.597)"] = new TrigEntry { Sin = 0.99999, Cos = 0.003, Tan = 318.31, Deg = 89.82 },
     ["rad(1.584)"] = new TrigEntry { Sin = 0.9999, Cos = 0.016, Tan = 63.657, Deg = 89.10 },
