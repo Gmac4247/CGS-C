@@ -305,7 +305,7 @@ public static double? SegmentArea(double length, double height)
     double ratio = 2 * height / length;
 
     // Validity checks
-    if (ratio == 0 || ratio > 1) return null;
+    if (ratio < 0.11 || ratio > 1) return null;
 
     double? angle = Cgs.Atan(ratio);
     if (!angle.HasValue) return null;
