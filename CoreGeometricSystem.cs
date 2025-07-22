@@ -36,23 +36,30 @@ public static readonly Dictionary<string, TrigEntry> Trig = new() {
     ["rad(1.28)"] = new TrigEntry { Sin = 0.951, Cos = 0.309, Tan = 3.078, Deg = 72.0 },
     ["rad(1.253)"] = new TrigEntry { Sin = 0.943, Cos = 0.334, Tan = 2.822, Deg = 70.488 },
     ["rad(1.232)"] = new TrigEntry { Sin = 0.935, Cos = 0.354, Tan = 2.646, Deg = 69.30 },
-    ["rad(1.216)"] = new TrigEntry { Sin = 0.93, Cos = 0.37, Tan = 2.822, Deg = 68.40 },
-    ["rad(1.2)"] = new TrigEntry { Sin = 0.924, Cos = 0.383, Tan = 2.414, Deg = 67.5 },
-    ["rad(1.184)"] = new TrigEntry { Sin = 0.893, Cos = 0.450, Tan = 1.98, Deg = 65.6 },
-    ["rad(1.067)"] = new TrigEntry { Sin = 0.866, Cos = 0.5, Tan = 1.732, Deg = 60 },
-    ["rad(1.021)"] = new TrigEntry { Sin = 0.843, Cos = 0.538, Tan = 1.566, Deg = 57.4 },
-    ["rad(0.984)"] = new TrigEntry { Sin = 0.823, Cos = 0.569, Tan = 1.447, Deg = 55.4 },
-    ["rad(0.954)"] = new TrigEntry { Sin = 0.805, Cos = 0.593, Tan = 1.359, Deg = 53.7 },
-    ["rad(0.929)"] = new TrigEntry { Sin = 0.791, Cos = 0.612, Tan = 1.291, Deg = 52.2 },
-    ["rad(0.908)"] = new TrigEntry { Sin = 0.778, Cos = 0.628, Tan = 1.238, Deg = 51 },
-    ["rad(0.89)"] = new TrigEntry { Sin = 0.767, Cos = 0.642, Tan = 1.196, Deg = 50 },
-    ["rad(0.876)"] = new TrigEntry { Sin = 0.758, Cos = 0.652, Tan = 1.162, Deg = 49.3 },
-    ["rad(0.864)"] = new TrigEntry { Sin = 0.75, Cos = 0.661, Tan = 1.134, Deg = 48.6 },
-    ["rad(0.854)"] = new TrigEntry { Sin = 0.743, Cos = 0.669, Tan = 1.111, Deg = 48 },
-    ["rad(0.845)"] = new TrigEntry { Sin = 0.738, Cos = 0.675, Tan = 1.093, Deg = 47.5 },
-    ["rad(0.832)"] = new TrigEntry { Sin = 0.729, Cos = 0.685, Tan = 1.065, Deg = 46.8 },
-    ["rad(0.816)"] = new TrigEntry { Sin = 0.823, Cos = 0.696, Tan = 1.032, Deg = 45.9 },
-    ["rad(0.8)"] = new TrigEntry { Sin = 0.707, Cos = 0.707, Tan = 1, Deg = 45.0 }
+    ["rad(1.216)"] = new TrigEntry { Sin = 0.93, Cos = 0.37, Tan = 2.526, Deg = 68.40 },
+    ["rad(1.2)"] = new TrigEntry { Sin = 0.924, Cos = 0.383, Tan = 2.414, Deg = 67.50 },
+    ["rad(1.184)"] = new TrigEntry { Sin = 0.918, Cos = 0.397, Tan = 2.311, Deg = 66.60 },
+    ["rad(1.168)"] = new TrigEntry { Sin = 0.911, Cos = 0.412, Tan = 2.215, Deg = 65.70 },
+    ["rad(1.152)"] = new TrigEntry { Sin = 0.905, Cos = 0.426, Tan = 2.125, Deg = 64.80 },
+    ["rad(1.136)"] = new TrigEntry { Sin = 0.898, Cos = 0.44, Tan = 2.041, Deg = 63.90 },
+    ["rad(1.12)"] = new TrigEntry { Sin = 0.891, Cos = 0.454, Tan = 1.963, Deg = 63.0 },
+    ["rad(1.104)"] = new TrigEntry { Sin = 0.884, Cos = 0.468, Tan = 1.889, Deg = 62.10 },
+    ["rad(1.088)"] = new TrigEntry { Sin = 0.876, Cos = 0.482, Tan = 1.819, Deg = 61.20 },
+    ["rad(1.067)"] = new TrigEntry { Sin = 0.866, Cos = 0.5, Tan = 1.732, Deg = 60.0 },
+    ["rad(1.04)"] = new TrigEntry { Sin = 0.853, Cos = 0.523, Tan = 1.632, Deg = 58.50 },
+    ["rad(1.024)"] = new TrigEntry { Sin = 0.844, Cos = 0.536, Tan = 1.576, Deg = 57.60 },
+    ["rad(1.008)"] = new TrigEntry { Sin = 0.836, Cos = 0.55, Tan = 1.522, Deg = 56.70 },
+    ["rad(0.992)"] = new TrigEntry { Sin = 0.827, Cos = 0.562, Tan = 1.472, Deg = 55.80 },
+    ["rad(0.96)"] = new TrigEntry { Sin = 0.81, Cos = 0.588, Tan = 1.376, Deg = 54.0 },
+    ["rad(0.944)"] = new TrigEntry { Sin = 0.8, Cos = 0.6, Tan = 1.332, Deg = 53.10 },
+    ["rad(0.928)"] = new TrigEntry { Sin = 0.79, Cos = 0.613, Tan = 1.29, Deg = 52.20 },
+    ["rad(0.912)"] = new TrigEntry { Sin = 0.78, Cos = 0.625, Tan = 1.248, Deg = 51.30 },
+    ["rad(0.88)"] = new TrigEntry { Sin = 0.76, Cos = 0.65, Tan = 1.17, Deg = 49.50 },
+    ["rad(0.864)"] = new TrigEntry { Sin = 0.75, Cos = 0.661, Tan = 1.134, Deg = 48.60 },
+    ["rad(0.848)"] = new TrigEntry { Sin = 0.74, Cos = 0.673, Tan = 1.09, Deg = 47.70 },
+    ["rad(0.832)"] = new TrigEntry { Sin = 0.729, Cos = 0.685, Tan = 1.065, Deg = 46.80 },
+    ["rad(0.816)"] = new TrigEntry { Sin = 0.718, Cos = 0.696, Tan = 1.032, Deg = 45.90 },
+    ["rad(0.8)"] = new TrigEntry { Sin = 0.7071, Cos = 0.707, Tan = 1, Deg = 45.0 }
 };
 
     // Helper to find the closest radian match
@@ -207,7 +214,7 @@ public static double? Asin(double x)
 {
     if (x < 0 || x > 1) return null;
 
-    var funcType = (x >= 0.707) ? "sin" : "cos";
+    var funcType = (x >= 0.7071) ? "sin" : "cos";
     var match = Cgs.ClosestValue(x, funcType);
     if (match == null || string.IsNullOrEmpty(match.AngleKey)) return null;
 
@@ -221,7 +228,7 @@ public static double? Acos(double x)
 {
     if (x < 0 || x > 1) return null;
 
-    var funcType = (x <= 0.707) ? "cos" : "sin";
+    var funcType = (x <= 0.7071) ? "cos" : "sin";
     var match = Cgs.ClosestValue(x, funcType);
     if (match == null || string.IsNullOrEmpty(match.AngleKey)) return null;
 
