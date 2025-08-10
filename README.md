@@ -52,40 +52,6 @@ r²=(a/4)²+(2(a/4))²
 r=(√5)(a/4)
 
 
-Quarter of the uncovered area in the middle: 
-
-(√3.2r)²÷4−((90−2×Atan(1÷2))÷360×3.2r²+2(√3.2r÷4×√3.2r÷2)÷2))
-
-=
-
-An overlapping area: 
-
-2(Atan(1÷2)÷360×3.2r²−(√3.2r÷4×√3.2r÷2)÷2)
-
-
-
-The equation can be simplified algebraically.
-
-
-Simplifying both sides by 3.2r² :
-
-1÷4−((90−2×Atan(1÷2))÷360+(1÷8))=2(Atan(1÷2)÷360−(1÷8)÷2)
-
-
-Simplifying further: 
-
-1÷4−((90−2×Atan(1÷2))÷360)=2×Atan(1÷2)÷360
-
-Substituting 90°/360° for 1/4: 
-
-90÷360−((90−2×Atan(1÷2))÷360)=2×Atan(1÷2)÷360
-
-Simplifying further: 
-
-Atan(1÷2) = Atan(1÷2)
-
-Which is equivalent to 1 = 1 .
-
 When the arcs of the quadrant circles intersect at the quarter of the centerline of the square, the uncovered area in the middle equals exactly the sum of the overlapping areas respectively. 
 
 The area of both the square and the sum of the quadrants equals 16 right triangles with legs of a quarter, and a half of the square's sides, and its hypotenuse equal to the radius of the circle. 
