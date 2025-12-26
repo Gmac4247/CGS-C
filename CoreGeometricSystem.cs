@@ -313,37 +313,125 @@ public static double? CircleArea(double radius)
 //     Console.WriteLine("Invalid radius");
 
 
-public static double? SegmentArea(double length, double height)
+public class SegmentCalculator
 {
-    if (length <= 0 || height <= 0) return null;
+    private string autoFilledField = null;
+    private (bool h, bool l, bool r) userEntered = (false, false, false);
 
-    double ratio = 2 * height / length;
+    public string SegmentArea(string activeField, string hText, string lText, string rText)
+    {
+        // Track which field the user typed into
+        if (activeField == "h") userEntered.h = true;
+        if (activeField == "l") userEntered.l = true;
+        if (activeField == "r") userEntered.r = true;
 
-    // Validity checks
-    if (ratio < 0.11 || ratio > 1) return null;
+        double h = Parse(hText);
+        double l = Parse(lText);
+        double r = Parse(rText);
 
-    double? angle = Cgs.Atan(ratio);
-    if (!angle.HasValue) return null;
+        // Reset if user edits the auto-filled field
+        if (autoFilledField != null && activeField == autoFilledField)
+        {
+            autoFilledField = null;
+            userEntered = (false, false, false);
+            return ""; // clear output
+        }
 
-    double? sine = Cgs.Sin(2 * angle.Value);
-    if (!sine.HasValue || sine.Value == 0) return null;
+        // Workflow A: height + radius → derive length
+        if (userEntered.h && userEntered.r && !userEntered.l && !double.IsNaN(h) && !double.IsNaN(r))
+        {
+            double angle = Acos((r - h) / r);
+            l = 2 * r * Sin(angle);
+            autoFilledField = "l";
+        }
 
-    double radius = length / (2 * sine.Value);
-    double area = angle * Math.pow(radius, 2) - (radius - height) * length / 2;
+        // Workflow B: height + length → derive radius
+        if (userEntered.h && userEntered.l && !userEntered.r && !double.IsNaN(h) && !double.IsNaN(l))
+        {
+            r = (l * l + 4 * h * h) / (8 * h);
+            autoFilledField = "r";
+        }
 
-    return Math.Round(area, 5);
+        // Workflow C: length + radius → derive height
+        if (userEntered.l && userEntered.r && !userEntered.h && !double.IsNaN(l) && !double.IsNaN(r))
+        {
+            h = r - Math.Sqrt(r * r - (l / 2) * (l / 2));
+            autoFilledField = "h";
+        }
+
+        // Proportion checks
+        if (l < 2 * h)
+            return "The chord length must be at least twice the height.";
+
+        if (l / h > 11)
+            return "Out of range: chord-to-height ratio exceeds 11.";
+
+        // Area calculation
+        double areaAngle = Acos((r - h) / r);
+        double area = areaAngle * r * r - (r - h) * (l / 2);
+
+        if (double.IsNaN(area))
+            return "";
+
+        if (h == r || h == l / 2 || l == 2 * r)
+            return $"Semicircle area = {area:F5} square units";
+
+        return $"Area = {area:F5} square units";
+    }
+
+    // Custom trig wrappers
+    private double Sin(double x) => Math.Sin(x);
+    private double Acos(double x) => Math.Acos(x);
+
+    private double Parse(string s)
+    {
+        if (double.TryParse(s, out double v))
+            return v;
+        return double.NaN;
+    }
 }
-
 // Example usage
 
-// double? area = Cgs.SegmentArea(10, 4);
-// if (area.HasValue)
-//     Console.WriteLine($"Segment area: {area.Value:F5} square units");
-// else
-//     Console.WriteLine("Invalid segment dimensions");
+public partial class MainWindow : Window
+{
+    private SegmentCalculator calc = new SegmentCalculator();
+
+    public MainWindow()
+    {
+        InitializeComponent();
+    }
+
+    private void InputChanged(object sender, TextChangedEventArgs e)
+    {
+        var box = sender as TextBox;
+        string activeField = box.Name switch
+        {
+            "HeightBox" => "h",
+            "LengthBox" => "l",
+            "RadiusBox" => "r",
+            _ => ""
+        };
+
+        string result = calc.SegmentArea(
+            activeField,
+            HeightBox.Text,
+            LengthBox.Text,
+            RadiusBox.Text
+        );
+
+        OutputBlock.Text = result;
+    }
+}
+
+<TextBox Name="HeightBox" TextChanged="InputChanged"/>
+<TextBox Name="LengthBox" TextChanged="InputChanged"/>
+<TextBox Name="RadiusBox" TextChanged="InputChanged"/>
+
+<TextBlock Name="OutputBlock"/>
 
 
-public static double? CircleCircumference(double radius)
+
+public static double? Circumference(double radius)
 {
     if (radius <= 0) return null;
 
@@ -352,7 +440,7 @@ public static double? CircleCircumference(double radius)
 
 // Example usage
 
-// double? circumference = Cgs.CircleCircumference(4); // radius = 4
+// double? circumference = Cgs.Circumference(4); // radius = 4
 // if (circumference.HasValue)
 //     Console.WriteLine($"Circle circumference: {circumference.Value:F5} units");
 // else
